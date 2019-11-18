@@ -2,10 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="d9e72726-c4db-46b1-a7b4-128c721acd4e" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/AttendanceController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/AttendanceController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/attendance/attendanceEditAdmin.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/attendance/attendanceEditAdmin.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/attendance/attendanceReceive.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/attendance/attendanceReceive.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/attendance/attendanceShowAdmin.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/attendance/attendanceShowAdmin.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/xl.csv" beforeDir="false" afterPath="$PROJECT_DIR$/public/xl.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/salary/edit.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/salary/edit.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/views/salary/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/salary/index.blade.php" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -26,7 +24,7 @@
         <entry file="file://$PROJECT_DIR$/routes/web.php">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="268">
-              <caret line="185" column="69" selection-start-line="185" selection-start-column="67" selection-end-line="185" selection-end-column="92" />
+              <caret line="291" column="53" selection-start-line="291" selection-start-column="53" selection-end-line="291" selection-end-column="70" />
             </state>
           </provider>
         </entry>
@@ -40,23 +38,11 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/resources/views/partial/joli/sidebar.blade.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="240">
-              <caret line="239" column="29" lean-forward="true" selection-start-line="239" selection-start-column="29" selection-end-line="239" selection-end-column="57" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/resources/views/salary/index.blade.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state>
-              <folding>
-                <element signature="n#style#0;n#hr#0;n#section#0;n#div#0;n#!!top" expanded="true" />
-                <element signature="n#div#5;n#section#0;n#div#0;n#!!top" />
-              </folding>
+            <state relative-caret-position="432">
+              <caret line="250" column="29" lean-forward="true" selection-start-line="250" selection-start-column="29" selection-end-line="250" selection-end-column="48" />
             </state>
           </provider>
         </entry>
@@ -73,9 +59,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>roles</find>
-      <find>filename</find>
-      <find>nav-justified</find>
       <find>JobDeleteUnSuccess</find>
       <find>generalSetup</find>
       <find>.page-container .page-content</find>
@@ -103,6 +86,9 @@
       <find>leave.entry.dh</find>
       <find>currentAttendanceDateAjax</find>
       <find>/attendance/ajax</find>
+      <find>dn</find>
+      <find>salaryCsvDownload</find>
+      <find>salary.csv.download</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -111,8 +97,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/resources/views/payscale/index.blade.php" />
-        <option value="$PROJECT_DIR$/resources/views/payscale/edit.blade.php" />
         <option value="$PROJECT_DIR$/resources/views/layouts/joli.blade.php" />
         <option value="$PROJECT_DIR$/database/migrations/2019_09_02_081255_create_branches_table.php" />
         <option value="$PROJECT_DIR$/app/Http/Controllers/BranchController.php" />
@@ -161,7 +145,9 @@
         <option value="$PROJECT_DIR$/app/Http/Controllers/AttendanceController.php" />
         <option value="$PROJECT_DIR$/resources/views/attendance/attendanceShowAdmin.blade.php" />
         <option value="$PROJECT_DIR$/resources/views/attendance/attendanceEditAdmin.blade.php" />
+        <option value="$PROJECT_DIR$/app/Http/Controllers/SalaryController.php" />
         <option value="$PROJECT_DIR$/resources/views/salary/index.blade.php" />
+        <option value="$PROJECT_DIR$/resources/views/salary/edit.blade.php" />
       </list>
     </option>
   </component>
@@ -317,13 +303,6 @@
               <item name="HR" type="462c0819:PsiDirectoryNode" />
               <item name="resources" type="462c0819:PsiDirectoryNode" />
               <item name="views" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="HR" type="b2602c69:ProjectViewProjectNode" />
-              <item name="HR" type="462c0819:PsiDirectoryNode" />
-              <item name="resources" type="462c0819:PsiDirectoryNode" />
-              <item name="views" type="462c0819:PsiDirectoryNode" />
-              <item name="branch" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="HR" type="b2602c69:ProjectViewProjectNode" />
@@ -547,12 +526,12 @@
       <workItem from="1573550482662" duration="1940000" />
       <workItem from="1573714545985" duration="3121000" />
       <workItem from="1573798355703" duration="8759000" />
-      <workItem from="1574058136494" duration="10936000" />
+      <workItem from="1574058136494" duration="15792000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="1488285000" />
+    <option name="totallyTimeSpent" value="1493141000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -624,23 +603,18 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="php">
           <url>file://$PROJECT_DIR$/resources/views/partial/joli/sidebar.blade.php</url>
-          <line>250</line>
-          <option name="timeStamp" value="65" />
+          <line>253</line>
+          <option name="timeStamp" value="71" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="php">
+          <url>file://$PROJECT_DIR$/resources/views/partial/joli/sidebar.blade.php</url>
+          <line>254</line>
+          <option name="timeStamp" value="72" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/resources/views/pension/index.blade.php">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/resources/views/religion/index.blade.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="288">
-          <caret line="12" column="39" lean-forward="true" selection-end-line="110" selection-end-column="11" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/resources/views/auth/register.blade.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-648" />
@@ -837,13 +811,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/routes/web.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="268">
-          <caret line="185" column="69" selection-start-line="185" selection-start-column="67" selection-end-line="185" selection-end-column="92" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/Http/Controllers/AttendanceController.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="196">
@@ -894,35 +861,53 @@
         <state relative-caret-position="-1656" />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/resources/views/branch/index.blade.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="192">
-          <caret line="8" column="26" selection-end-line="116" selection-end-column="11" />
-          <folding>
-            <element signature="e#3402#4739#0#HTML" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/resources/views/salary/setup.blade.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-1368" />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/resources/views/partial/joli/sidebar.blade.php">
+    <entry file="file://$PROJECT_DIR$/resources/views/branch/index.blade.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="240">
-          <caret line="239" column="29" lean-forward="true" selection-start-line="239" selection-start-column="29" selection-end-line="239" selection-end-column="57" />
+        <state relative-caret-position="168">
+          <caret line="7" column="27" lean-forward="true" selection-end-line="116" selection-end-column="11" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/routes/web.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="268">
+          <caret line="291" column="53" selection-start-line="291" selection-start-column="53" selection-end-line="291" selection-end-column="70" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/SalaryController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-5110">
+          <caret line="46" column="64" lean-forward="true" selection-start-line="46" selection-start-column="64" selection-end-line="46" selection-end-column="64" />
+          <folding>
+            <element signature="e#40#59#0#PHP" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/views/salary/edit.blade.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="3288">
+          <caret line="137" column="14" selection-start-line="137" selection-start-column="14" selection-end-line="137" selection-end-column="14" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/resources/views/salary/index.blade.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <folding>
-            <element signature="n#style#0;n#hr#0;n#section#0;n#div#0;n#!!top" expanded="true" />
-            <element signature="n#div#5;n#section#0;n#div#0;n#!!top" />
-          </folding>
+        <state relative-caret-position="264">
+          <caret line="11" column="11" lean-forward="true" selection-start-line="11" selection-start-column="11" selection-end-line="11" selection-end-column="11" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/views/partial/joli/sidebar.blade.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="432">
+          <caret line="250" column="29" lean-forward="true" selection-start-line="250" selection-start-column="29" selection-end-line="250" selection-end-column="48" />
         </state>
       </provider>
     </entry>
