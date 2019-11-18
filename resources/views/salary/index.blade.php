@@ -1,3 +1,15 @@
+
+
+
+
+
+
+
+
+
+
+
+
 @include('includes.bubbly.header')
 @include('includes.bubbly.sidebar')
 <div class="container-fluid px-xl-5">
