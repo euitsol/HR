@@ -24,6 +24,7 @@
 <body>
 <!-- START PAGE CONTAINER -->
 <div class="page-container">
+    <div id="loader" style="background: url({{asset('Load.gif')}}) 50% 50% no-repeat rgb(249, 249, 249);"></div>
     <!-- START PAGE SIDEBAR -->
 @include('partial.joli.sidebar')
 <!-- END PAGE SIDEBAR -->
@@ -74,6 +75,11 @@
 <!-- START SCRIPTS -->
 <!-- START PLUGINS -->
 <script type="text/javascript" src="{{asset('joli/js/plugins/jquery/jquery.min.js')}}"></script>
+<script>
+    $(window).on('load', function () {
+        $("#loader").fadeOut("slow");
+    });
+</script>
 <script type="text/javascript" src="{{asset('joli/js/plugins/jquery/jquery-ui.min.js')}}"></script>
 <script type="text/javascript" src="{{asset('joli/js/plugins/bootstrap/bootstrap.min.js')}}"></script>
 <!-- END PLUGINS -->
