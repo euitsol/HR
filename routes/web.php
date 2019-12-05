@@ -1,7 +1,6 @@
 <?php
 
 Route::get('/', function () {
-    Storage::disk('local')->put('office', App\Office::find(1));
     return view('welcome');
 });
 
