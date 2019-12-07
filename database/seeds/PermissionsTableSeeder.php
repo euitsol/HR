@@ -44,6 +44,7 @@ class PermissionsTableSeeder extends Seeder
             31 => ["warningDH", "Department Head", "Complain Management menu that goes under Employee Management", 45],
             32 => ["warningHR", "HR", "Complain Management menu that goes under Employee Management", 47],
             33 => ["kpi", "KPI", "KPI menu", 49],
+            34 => ["project_manager", "Project Manager", "Project Manager menu under Task Management", 53],
         ];
         $superAdmin = Role::find(1);
         foreach ($ps as $p){

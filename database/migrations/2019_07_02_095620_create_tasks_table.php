@@ -16,6 +16,7 @@ class CreateTasksTable extends Migration
             $table->string('title');
             $table->date('deadline');
             $table->text('remark');
+            $table->boolean('progress')->default(0)->index();
             $table->boolean('submit')->default(0)->index();
             $table->text('submit_report')->nullable();
             $table->string('submit_file')->nullable();

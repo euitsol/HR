@@ -338,6 +338,17 @@
             </ul>
         </li>
         @endpermission
+        <li class="xn-openable">
+            <a href="#"><span class="glyphicon glyphicon-calendar"></span> <span
+                        class="xn-text"> {{$menu[51]->display_name}}</span></a>
+            <ul>
+                @permission('project_manager')
+                <li><a href="#"><i class="glyphicon glyphicon-minus"></i> [[{{$menu[52]->display_name}}]]</a></li>
+                @endpermission
+                <li><a href="{{route('task.general')}}"><i
+                                class="glyphicon glyphicon-minus"></i> {{$menu[53]->display_name}}</a></li>
+            </ul>
+        </li>
         <li class="xn-title">Old</li>
         <li class="xn-openable">
             <a href="#"><span class="fa fa-info"></span> <span
