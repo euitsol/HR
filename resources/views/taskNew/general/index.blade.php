@@ -91,7 +91,7 @@
                                         <span class="fa fa-circle text-success"></span> {{$d->title}}
                                     </a>
                                     <div class="pull-right">
-                                        <a href="#" target="_blank" title="Department Comment"><span
+                                        <a href="{{route('department.comment', ['did' => $d->id])}}" target="_blank" title="Department Comment"><span
                                                     class="fa fa-comments"></span></a>
                                     </div>
                                 </div>
@@ -114,6 +114,12 @@
                                     <div class="task-text">
                                         <p>{{$t->title}}</p>
                                         {{$t->remark}}
+                                        @if($t->dependencies)
+                                            <br>
+                                            @foreach($t->dependencies as $td)
+                                                <a href="#" target="_blank" title="Task Comment">{{$td->title}}</a>
+                                            @endforeach
+                                        @endif
                                     </div>
                                     <div class="task-footer" tid="{{$t->id}}">
                                         <div class="pull-left"><span class="fa fa-clock-o"></span> {{$t->deadline}}
@@ -136,6 +142,12 @@
                                     <div class="task-text">
                                         <p>{{$t->title}}</p>
                                         {{$t->remark}}
+                                        @if($t->dependencies)
+                                            <br>
+                                            @foreach($t->dependencies as $td)
+                                                <a href="#" target="_blank" title="Task Comment">{{$td->title}}</a>
+                                            @endforeach
+                                        @endif
                                     </div>
                                     <div class="task-footer" tid="{{$t->id}}">
                                         <div class="pull-left"><span class="fa fa-clock-o"></span> {{$t->deadline}}
@@ -162,6 +174,12 @@
                                     <div class="task-text">
                                         <p>{{$t->title}}</p>
                                         {{$t->remark}}
+                                        @if($t->dependencies)
+                                            <br>
+                                            @foreach($t->dependencies as $td)
+                                                <a href="#" target="_blank" title="Task Comment">{{$td->title}}</a>
+                                            @endforeach
+                                        @endif
                                     </div>
                                     <div class="task-footer" tid="{{$t->id}}">
                                         <div class="pull-left"><span
@@ -178,6 +196,12 @@
                                     <div class="duplicate-task-text">
                                         <p>{{$t->title}}</p>
                                         {{$t->remark}}
+                                        @if($t->dependencies)
+                                            <br>
+                                            @foreach($t->dependencies as $td)
+                                                <a href="#" target="_blank" title="Task Comment">{{$td->title}}</a>
+                                            @endforeach
+                                        @endif
                                     </div>
                                     <div class="task-footer">
                                         <div class="pull-left">

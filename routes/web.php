@@ -261,11 +261,16 @@ Route::get('/salary/csv/download', 'SalaryController@salaryCsvDownload')->name('
 
 // Project Management New
 Route::get('/Tasks-Management/General', 'TaskController2@general')->name('task.general');
-
-//Route::get('/Pension/is_gross', 'PensionController@isGrossAjax')->middleware('auth');
 Route::get('/ajax/get-department-of-project', 'TaskController2@ajaxDfromP');
 Route::get('/ajax/get-tasks-of-project', 'TaskController2@ajaxTfromP');
 Route::get('/ajax/task-status-change', 'TaskController2@ajaxTSC');
+Route::get('/Tasks-Management/General/Department/{did}/Comment', 'TaskController2@departmentComment')->name('department.comment');
+Route::get('/Tasks-Management/General/Department/{did}/Comment/edit/{cid}', 'TaskController2@departmentCommentEdit')->name('department.comment.edit');
+Route::post('/Tasks-Management/General/Department/{did}/Comment/store', 'TaskController2@departmentCommentStore')->name('department.comment.store');
+Route::post('/Tasks-Management/General/Department/Comment/update/{cid}', 'TaskController2@departmentCommentUpdate')->name('department.comment.update');
+Route::get('/Department/Comment/download/{cid}', 'TaskController2@departmentCommentDownload')->name('download.department.comment.file');
+Route::get('/Department/Comment/{cid}', 'TaskController2@departmentCommentDelete')->name('department.comment.delete');
+
 
 
 
