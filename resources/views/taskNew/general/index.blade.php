@@ -25,6 +25,23 @@
         }
 
 
+        .duplicate-task-text {
+            margin-bottom: 10px;
+            float: left;
+            width: 100%;
+            font-size: 12px;
+            font-weight: 400;
+            padding: 10px;
+        }
+
+        .cursor:hover {
+            cursor: not-allowed !important;
+        }
+
+        .cursor2:hover {
+            cursor: move !important;
+        }
+
     </style>
 @endsection
 @section('breadcrumb')
@@ -74,7 +91,8 @@
                                         <span class="fa fa-circle text-success"></span> {{$d->title}}
                                     </a>
                                     <div class="pull-right">
-                                        <a href="#"><span class="fa fa-comments"></span></a>
+                                        <a href="#" target="_blank" title="Department Comment"><span
+                                                    class="fa fa-comments"></span></a>
                                     </div>
                                 </div>
                             @endforeach
@@ -92,7 +110,7 @@
                     <div class="tasks" id="tasks">
                         @foreach($tasks as $t)
                             @if(($t->progress * 1) == 0)
-                                <div class="task-item task-info">
+                                <div class="task-item task-info cursor2">
                                     <div class="task-text">
                                         <p>{{$t->title}}</p>
                                         {{$t->remark}}
@@ -100,7 +118,8 @@
                                     <div class="task-footer" tid="{{$t->id}}">
                                         <div class="pull-left"><span class="fa fa-clock-o"></span> {{$t->deadline}}
                                         </div>
-                                        <div class="pull-right"><a href="#"><span class="fa fa-comments"></span></a>
+                                        <div class="pull-right"><a href="#" target="_blank" title="Task Comment"><span
+                                                        class="fa fa-comments"></span></a>
                                         </div>
                                     </div>
                                 </div>
@@ -113,7 +132,7 @@
                     <div class="tasks" id="tasks_progreess">
                         @foreach($tasks as $t)
                             @if((($t->progress * 1) == 1) && (($t->submit * 1) == 0))
-                                <div class="task-item task-info">
+                                <div class="task-item task-info cursor2">
                                     <div class="task-text">
                                         <p>{{$t->title}}</p>
                                         {{$t->remark}}
@@ -121,7 +140,8 @@
                                     <div class="task-footer" tid="{{$t->id}}">
                                         <div class="pull-left"><span class="fa fa-clock-o"></span> {{$t->deadline}}
                                         </div>
-                                        <div class="pull-right"><a href="#"><span class="fa fa-comments"></span></a>
+                                        <div class="pull-right"><a href="#" target="_blank" title="Task Comment"><span
+                                                        class="fa fa-comments"></span></a>
                                         </div>
                                     </div>
                                 </div>
@@ -137,34 +157,36 @@
                     <h3>Completed</h3>
                     <div class="tasks" id="tasks_completed">
                         @foreach($tasks as $t)
-                            @if(($t->submit * 1) == 1)
-                                <div class="task-item task-warning task-complete">
+                            @if((($t->submit * 1) == 1) && (($t->submit_accept * 1) == 0))
+                                <div class="task-item task-warning task-complete cursor2">
                                     <div class="task-text">
                                         <p>{{$t->title}}</p>
                                         {{$t->remark}}
                                     </div>
                                     <div class="task-footer" tid="{{$t->id}}">
-                                        <div class="pull-left"><span class="fa fa-clock-o"></span> {{$t->updated_at}}
+                                        <div class="pull-left"><span
+                                                    class="fa fa-clock-o"></span> {{$t->updated_at}}
+                                        </div>
+                                        <div class="pull-right">
+                                            <a href="#" target="_blank" title="Submit Report"><i
+                                                        class="glyphicon glyphicon-envelope"></i></a>
+                                        </div>
+                                    </div>
+                                </div>
+                            @elseif(($t->submit_accept * 1) == 1)
+                                <div class="task-item task-primary task-complete cursor">
+                                    <div class="duplicate-task-text">
+                                        <p>{{$t->title}}</p>
+                                        {{$t->remark}}
+                                    </div>
+                                    <div class="task-footer">
+                                        <div class="pull-left">
+                                            <span class="text-primary"><b>Accepted</b></span>
                                         </div>
                                     </div>
                                 </div>
                             @endif
                         @endforeach
-
-
-                            <div class="task-item task-warning task-complete">
-                                <div class="task-textaa">
-                                    <p>Test</p>
-                                    Should not be moved
-                                </div>
-                                <div class="task-footer">
-                                    <div class="pull-left"><span class="fa fa-clock-o"></span> 11111
-                                    </div>
-                                </div>
-                            </div>
-
-
-
                         <div class="task-drop">
                             <span class="fa fa-cloud"></span>
                             Drag your task here to finish it
@@ -182,15 +204,16 @@
     {{--    <script type="text/javascript" src="{{asset('joli/js/plugins/bootstrap/bootstrap-select.js')}}"></script>--}}
     {{--    <script type="text/javascript" src="{{asset('joli/js/demo_tasks.js')}}"></script>--}}
     <script>
-        $("body").on("click", "#tasks,#tasks_progreess,#tasks_completed", function () {
+        $("body").on("mouseenter", "#tasks,#tasks_progreess,#tasks_completed", function () {
             $("#tasks,#tasks_progreess,#tasks_completed").sortable({
                 items: "> .task-item",
                 connectWith: "#tasks_progreess,#tasks_completed",
                 handle: ".task-text",
                 receive: function (event, ui) {
                     if (this.id == "tasks_completed") {
-                        ui.item.addClass("task-complete").find(".task-footer > .pull-right").remove();
+                        ui.item.find(".pull-right > a").remove();
                         var tid = ui.item.find(".task-footer").attr('tid');
+                        ui.item.find(".pull-right").append('<a href="#" target="_blank" title="Submit Report"><i class="glyphicon glyphicon-envelope"></i></a>');
                         // call ajax here (task completed)
                         $.ajax({
                             url: '/ajax/task-status-change',
@@ -203,8 +226,9 @@
 
                     }
                     if (this.id == "tasks_progreess") {
-                        ui.item.find(".task-footer").append('<div class="pull-right">');
+                        ui.item.find(".pull-right > a").remove();
                         var tid = ui.item.find(".task-footer").attr('tid');
+                        ui.item.find(".pull-right").append('<a href="#" target="_blank" title="Submit Report"><span class="fa fa-comments"></span></a>');
                         // call ajax here (task in progress)
                         $.ajax({
                             url: '/ajax/task-status-change',

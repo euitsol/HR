@@ -33,15 +33,20 @@ class ProjectsTableSeeder extends Seeder
                 $T = rand(2, 7);
                 for ($i = 0; $i < $T; $i++) {
                     $S = rand(2, 6);
-                    Task::create([
-                        'project_id' => $p->id,
-                        'department_id' => $d->id,
-                        'title' => $faker->unique()->userName,
-                        'deadline' => $faker->dateTimeBetween('+5 days', '+70 days'),
-                        'remark' => $faker->paragraph($S),
-                        'progress' => rand(0, 1),
-                        'submit' => rand(0, 1),
-                    ]);
+                    $t = new Task;
+                    $t->project_id = $p->id;
+                    $t->department_id = $d->id;
+                    $t->title = $faker->unique()->userName;
+                    $t->deadline = $faker->dateTimeBetween('+5 days', '+70 days');
+                    $t->remark = $faker->paragraph($S);
+                    $t->progress = rand(0, 1);
+                    if ($t->progress == 1){
+                        $t->submit = rand(0, 1);
+                        if ($t->submit == 1){
+                            $t->submit_accept = rand(0, 1);
+                        }
+                    }
+                    $t->save();
                 }
                 $tasks = Task::where('project_id', $p->id)->where('department_id', $d->id)->get();
                 foreach ($tasks as $t) {
@@ -57,6 +62,6 @@ class ProjectsTableSeeder extends Seeder
                 }
             }
         }
-        DB::table('userassigns as n1')->join('userassigns as n2', 'n1.id', '>', 'n2.id')->where('n1.user_id', '=', 'n2.user_id')->where('n1.task_id', '=', 'n2.task_id')->delete();
+        DB::select( DB::raw('DELETE n1 FROM userassigns n1, userassigns n2 WHERE n1.id < n2.id AND n1.user_id = n2.user_id AND n1.task_id = n2.task_id'));
     }
 }
