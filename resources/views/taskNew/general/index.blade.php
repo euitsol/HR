@@ -91,7 +91,8 @@
                                         <span class="fa fa-circle text-success"></span> {{$d->title}}
                                     </a>
                                     <div class="pull-right">
-                                        <a href="{{route('department.comment', ['did' => $d->id])}}" target="_blank" title="Department Comment"><span
+                                        <a href="{{route('department.comment', ['did' => $d->id])}}" target="_blank"
+                                           title="Department Comment"><span
                                                     class="fa fa-comments"></span></a>
                                     </div>
                                 </div>
@@ -117,14 +118,16 @@
                                         @if($t->dependencies)
                                             <br>
                                             @foreach($t->dependencies as $td)
-                                                <a href="#" target="_blank" title="Task Comment">{{$td->title}}</a>
+                                                <a href="{{route('task.comment', ['tid' => $td->id])}}" target="_blank"
+                                                   title="Task Comment">{{$td->title}}</a>
                                             @endforeach
                                         @endif
                                     </div>
                                     <div class="task-footer" tid="{{$t->id}}">
                                         <div class="pull-left"><span class="fa fa-clock-o"></span> {{$t->deadline}}
                                         </div>
-                                        <div class="pull-right"><a href="#" target="_blank" title="Task Comment"><span
+                                        <div class="pull-right"><a href="{{route('task.comment', ['tid' => $t->id])}}"
+                                                                   target="_blank" title="Task Comment"><span
                                                         class="fa fa-comments"></span></a>
                                         </div>
                                     </div>
@@ -145,14 +148,16 @@
                                         @if($t->dependencies)
                                             <br>
                                             @foreach($t->dependencies as $td)
-                                                <a href="#" target="_blank" title="Task Comment">{{$td->title}}</a>
+                                                <a href="{{route('task.comment', ['tid' => $td->id])}}" target="_blank"
+                                                   title="Task Comment">{{$td->title}}</a>
                                             @endforeach
                                         @endif
                                     </div>
                                     <div class="task-footer" tid="{{$t->id}}">
                                         <div class="pull-left"><span class="fa fa-clock-o"></span> {{$t->deadline}}
                                         </div>
-                                        <div class="pull-right"><a href="#" target="_blank" title="Task Comment"><span
+                                        <div class="pull-right"><a href="{{route('task.comment', ['tid' => $t->id])}}"
+                                                                   target="_blank" title="Task Comment"><span
                                                         class="fa fa-comments"></span></a>
                                         </div>
                                     </div>
@@ -177,7 +182,8 @@
                                         @if($t->dependencies)
                                             <br>
                                             @foreach($t->dependencies as $td)
-                                                <a href="#" target="_blank" title="Task Comment">{{$td->title}}</a>
+                                                <a href="{{route('task.comment', ['tid' => $td->id])}}" target="_blank"
+                                                   title="Task Comment">{{$td->title}}</a>
                                             @endforeach
                                         @endif
                                     </div>
@@ -186,8 +192,8 @@
                                                     class="fa fa-clock-o"></span> {{$t->updated_at}}
                                         </div>
                                         <div class="pull-right">
-                                            <a href="#" target="_blank" title="Submit Report"><i
-                                                        class="glyphicon glyphicon-envelope"></i></a>
+                                            <a href="{{route('submit.report', ['tid' => $t->id])}}" target="_blank"
+                                               title="Submit Report"><i class="glyphicon glyphicon-envelope"></i></a>
                                         </div>
                                     </div>
                                 </div>
@@ -199,7 +205,8 @@
                                         @if($t->dependencies)
                                             <br>
                                             @foreach($t->dependencies as $td)
-                                                <a href="#" target="_blank" title="Task Comment">{{$td->title}}</a>
+                                                <a href="{{route('task.comment', ['tid' => $td->id])}}" target="_blank"
+                                                   title="Task Comment">{{$td->title}}</a>
                                             @endforeach
                                         @endif
                                     </div>
@@ -252,7 +259,9 @@
                     if (this.id == "tasks_progreess") {
                         ui.item.find(".pull-right > a").remove();
                         var tid = ui.item.find(".task-footer").attr('tid');
-                        ui.item.find(".pull-right").append('<a href="#" target="_blank" title="Submit Report"><span class="fa fa-comments"></span></a>');
+                        var route = "{{route('task.comment', ['tid' => 'xxx'])}}";
+                        var replace = route.replace('xxx', tid);
+                        ui.item.find(".pull-right").append('<a href="' + replace + '" target="_blank" title="Task Comment"><span class="fa fa-comments"></span></a>');
                         // call ajax here (task in progress)
                         $.ajax({
                             url: '/ajax/task-status-change',
