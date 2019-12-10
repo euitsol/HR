@@ -1,5 +1,5 @@
 @extends('layouts.joli')
-@section('title', 'Department Comment')
+@section('title', 'Department Comment Edit')
 @section('style')
     <style>
         .comment-img {
@@ -28,7 +28,8 @@
     @endphp
     <ul class="breadcrumb">
         <li>{{$menu[51]->display_name}}</li>
-        <li class="active">Department Comment</li>
+        <li><a href="{{route('department.comment', ['did' => $department->id])}}">Department Comment</a></li>
+        <li class="active">Edit</li>
     </ul>
 @endsection
 @section('pageTitle')
@@ -91,9 +92,11 @@
                                     <span class="date">
                                         {{\Carbon\Carbon::createFromTimeStamp(strtotime($c->created_at))->diffForHumans()}}
                                         @if(((Auth::id()) == (($c->user_id)*1)) && (($cedit->id * 1) != ($c->id)))
-                                            <a href="{{route('department.comment.edit', ['did' => $department->id,'cid' => $c->id])}}" title="Edit"><i
+                                            <a href="{{route('department.comment.edit', ['did' => $department->id,'cid' => $c->id])}}"
+                                               title="Edit"><i
                                                         class="fa fa-pencil" style="color: #95b75d;"></i></a>
-                                            <a href="{{route('department.comment.delete', ['cid' => $c->id])}}" title="Delete"
+                                            <a href="{{route('department.comment.delete', ['cid' => $c->id])}}"
+                                               title="Delete"
                                                onclick="return confirm('Are you sure you want to delete the comment ?')"><i
                                                         class="fa fa-trash-o" style="color: #E04B4A;"></i></a>
                                         @endif
@@ -113,56 +116,13 @@
                                         </a>
                                     @endif
                                 @endif
-                                <a href="{{route('replyg.create', ['cid' => $c->id])}}" class="float-right">
+                                <a href="{{route('department.reply', ['cid' => $c->id])}}" class="float-right"
+                                   target="_blank">
                                     <i class="fa fa-mail-reply"></i>
                                 </a>
-                                {{--     Reply        --}}
-                                @foreach($c->replies as $r)
-                                    <div class="item reply-item reply-item-first">
-                                        <div class="image">
-                                            <img
-                                                    @if($r->user_image != null)
-                                                    src="{{asset($r->user_image)}}"
-                                                    @else
-                                                    src="{{asset('joli/avatar.png')}}"
-                                                    @endif
-                                                    alt="Image">
-                                        </div>
-                                        <div class="text">
-                                            <div class="heading">
-                                                <a href="#" style="text-decoration: none;">{{$r->user_name}}</a>
-                                                <span class="date">
-                                                    {{\Carbon\Carbon::createFromTimeStamp(strtotime($r->created_at))->diffForHumans()}}
-                                                    @if((Auth::id()) == (($r->user_id)*1))
-                                                        <a href="{{route('replyg.edit', ['rid' => $r->id])}}"><i
-                                                                    class="fa fa-pencil"
-                                                                    style="color: #95b75d;"></i></a>
-                                                        <a href="{{route('replyg.delete', ['rid' => $r->id])}}"
-                                                           onclick="return confirm('Are you sure you want to delete the Reply ?')"><i
-                                                                    class="fa fa-trash-o"
-                                                                    style="color: #E04B4A;"></i></a>
-                                                    @endif
-                                                 </span>
-                                            </div>
-                                            {{$r->replyg}}
-                                            @if($r->file != null)
-                                                <br>
-                                                @if ((pathinfo($r->file, PATHINFO_EXTENSION) == 'jpeg') || (pathinfo($r->file, PATHINFO_EXTENSION) == 'jpg') || (pathinfo($r->file, PATHINFO_EXTENSION) == 'png') ||(pathinfo($r->file, PATHINFO_EXTENSION) == 'gif'))
-                                                    <a href="{{route('download.replyg.file', ['rid' => $r->id])}}"
-                                                       onclick="return confirm('Are you sure you want to download the image ?')">
-                                                        <img src="{{asset($r->file)}}" alt="Image"
-                                                             class="comment-img">
-                                                    </a>
-                                                @else
-                                                    <a href="{{route('download.replyg.file', ['rid' => $r->id])}}">
-                                                        <i class="glyphicon glyphicon-cloud-download"></i>
-                                                    </a>
-                                                @endif
-                                            @endif
-                                        </div>
-                                    </div>
-                                @endforeach
-                                {{--     Reply  End      --}}
+                                {{--     Replies        --}}
+                                @include('includes.joli.department_comment.replies')
+                                {{--     Replies  End      --}}
                             </div>
                         </div>
                     @endforeach

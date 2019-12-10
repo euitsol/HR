@@ -265,11 +265,29 @@ Route::get('/ajax/get-department-of-project', 'TaskController2@ajaxDfromP');
 Route::get('/ajax/get-tasks-of-project', 'TaskController2@ajaxTfromP');
 Route::get('/ajax/task-status-change', 'TaskController2@ajaxTSC');
 Route::get('/Tasks-Management/General/Department/{did}/Comment', 'TaskController2@departmentComment')->name('department.comment');
-Route::get('/Tasks-Management/General/Department/{did}/Comment/edit/{cid}', 'TaskController2@departmentCommentEdit')->name('department.comment.edit');
+Route::get('/Tasks-Management/General/Department/Comment/{cid}/reply', 'TaskController2@departmentReply')->name('department.reply');
 Route::post('/Tasks-Management/General/Department/{did}/Comment/store', 'TaskController2@departmentCommentStore')->name('department.comment.store');
+Route::post('/Tasks-Management/General/Department/Reply/{cid}/store', 'TaskController2@departmentReplyStore')->name('department.reply.store');
+Route::get('/Tasks-Management/General/Department/{did}/Comment/edit/{cid}', 'TaskController2@departmentCommentEdit')->name('department.comment.edit');
+Route::get('/Tasks-Management/General/Department/Comment/reply/{rid}/edit', 'TaskController2@departmentReplyEdit')->name('department.reply.edit');
 Route::post('/Tasks-Management/General/Department/Comment/update/{cid}', 'TaskController2@departmentCommentUpdate')->name('department.comment.update');
+Route::post('/Tasks-Management/General/Department/Reply/update/{rid}', 'TaskController2@departmentReplyUpdate')->name('department.reply.update');
 Route::get('/Department/Comment/download/{cid}', 'TaskController2@departmentCommentDownload')->name('download.department.comment.file');
+Route::get('/Department/Reply/download/{rid}', 'TaskController2@departmentReplyDownload')->name('download.department.reply.file');
 Route::get('/Department/Comment/{cid}', 'TaskController2@departmentCommentDelete')->name('department.comment.delete');
+Route::get('/Department/reply/{rid}', 'TaskController2@departmentReplyDelete')->name('department.reply.delete');
+Route::get('/Tasks-Management/General/Task/{tid}/Comment', 'TaskController2@taskComment')->name('task.comment');
+//Route::get('/Tasks-Management/General/Department/Comment/{cid}/reply', 'TaskController2@departmentReply')->name('department.reply');
+//Route::post('/Tasks-Management/General/Department/{did}/Comment/store', 'TaskController2@departmentCommentStore')->name('department.comment.store');
+//Route::post('/Tasks-Management/General/Department/Reply/{cid}/store', 'TaskController2@departmentReplyStore')->name('department.reply.store');
+//Route::get('/Tasks-Management/General/Department/{did}/Comment/edit/{cid}', 'TaskController2@departmentCommentEdit')->name('department.comment.edit');
+//Route::get('/Tasks-Management/General/Department/Comment/reply/{rid}/edit', 'TaskController2@departmentReplyEdit')->name('department.reply.edit');
+//Route::post('/Tasks-Management/General/Department/Comment/update/{cid}', 'TaskController2@departmentCommentUpdate')->name('department.comment.update');
+//Route::post('/Tasks-Management/General/Department/Reply/update/{rid}', 'TaskController2@departmentReplyUpdate')->name('department.reply.update');
+//Route::get('/Department/Comment/download/{cid}', 'TaskController2@departmentCommentDownload')->name('download.department.comment.file');
+//Route::get('/Department/Reply/download/{rid}', 'TaskController2@departmentReplyDownload')->name('download.department.reply.file');
+//Route::get('/Department/Comment/{cid}', 'TaskController2@departmentCommentDelete')->name('department.comment.delete');
+//Route::get('/Department/reply/{rid}', 'TaskController2@departmentReplyDelete')->name('department.reply.delete');
 
 
 

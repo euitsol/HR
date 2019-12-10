@@ -300,7 +300,7 @@ class TaskController2 extends Controller
                 $r['user_image'] = $u->image;
                 $r['user_name'] = $u->name;
             }
-            $c['replies'] = Reply::where('comment_id', $c->id)->get();
+            $c['replies'] = $replies;
             $u = User::find($c->user_id);
             $c['user_image'] = $u->image;
             $c['user_name'] = $u->name;
@@ -360,7 +360,7 @@ class TaskController2 extends Controller
                 $r['user_image'] = $u->image;
                 $r['user_name'] = $u->name;
             }
-            $c['replies'] = Reply::where('comment_id', $c->id)->get();
+            $c['replies'] = $replies;
             $u = User::find($c->user_id);
             $c['user_image'] = $u->image;
             $c['user_name'] = $u->name;
@@ -399,6 +399,104 @@ class TaskController2 extends Controller
         $ext = pathinfo($c->file, PATHINFO_EXTENSION);
         $name = 'comment_file_department.'.$ext;
         return response()->download($c->file, $name);
+    }
+
+
+    public function departmentReply($cid)
+    {
+        $c = Comment::find($cid);
+        $department = Department::find($c->department_id);
+        $project = Project::find($c->project_id);
+        $replies = Reply::where('comment_id', $cid)->get();
+        foreach ($replies as $r){
+            $u = User::find($r->user_id);
+            $r['user_image'] = $u->image;
+            $r['user_name'] = $u->name;
+        }
+        $u = User::find($c->user_id);
+        $c['user_image'] = $u->image;
+        $c['user_name'] = $u->name;
+        $c['replies'] = $replies;
+        return view('taskNew.general.comment.reply.index', compact('c', 'project', 'department'));
+    }
+
+
+
+    public function departmentReplyStore(Request $request, $cid)
+    {
+        $this->validate($request, [
+            'reply' => 'required',
+        ]);
+        $c = Comment::find($cid);
+        $r = new Reply;
+        $r->user_id = Auth::id();
+        $r->project_id = $c->project_id;
+        $r->department_id = $c->department_id;
+        $r->comment_id = $cid;
+        $r->reply = $request->reply;
+        if ($request->hasFile('file')) {
+            $f = $request->file;
+            $f_name = time() . $f->getClientOriginalName();
+            $a = $f->move('uploads/replies', $f_name);
+            $d = 'uploads/replies/' . $f_name;
+            $r->file = $d;
+        }
+        $r->save();
+        Session::flash('success', "The Reply has been created successfully.");
+        return redirect()->back();
+    }
+
+
+    public function departmentReplyEdit($rid)
+    {
+        $redit = Reply::find($rid);
+        $department = Department::find($redit->department_id);
+        $project = Project::find($redit->project_id);
+        return view('taskNew.general.comment.reply.edit', compact('redit', 'department', 'project'));
+    }
+
+
+    public function departmentReplyUpdate(Request $request, $rid)
+    {
+        $this->validate($request, [
+            'reply' => 'required',
+        ]);
+        $r = Reply::find($rid);
+        $r->reply = $request->reply;
+        if ($request->hasFile('file')) {
+            if ($r->file){
+                unlink($r->file);
+            }
+            $f = $request->file;
+            $f_name = time() . $f->getClientOriginalName();
+            $a = $f->move('uploads/replies', $f_name);
+            $d = 'uploads/replies/' . $f_name;
+            $r->file = $d;
+        }
+        $r->update();
+        Session::flash('success', "The Reply has been updated successfully.");
+        return redirect()->route('department.reply', ['cid' => $r->comment_id]);
+    }
+
+
+    public function departmentReplyDelete($rid)
+    {
+        $r = Reply::find($rid);
+        if ($r->file){
+            unlink($r->file);
+        }
+        $r->delete();
+        Session::flash('success', "The Reply has been deleted successfully.");
+        return redirect()->back();
+    }
+
+
+    public function departmentReplyDownload($rid)
+    {
+        $r = Reply::find($rid);
+        $ext = pathinfo($r->file, PATHINFO_EXTENSION);
+        $name = 'reply_file_department.'.$ext;
+        return response()->download($r->file, $name);
     }
 
 

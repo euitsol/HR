@@ -2,8 +2,12 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="d9e72726-c4db-46b1-a7b4-128c721acd4e" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Http/Controllers/TaskController2.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/TaskController2.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/taskNew/general/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/taskNew/general/index.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/comment_global/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/comment_global/index.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/comment_global/reply.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/comment_global/reply.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/taskNew/general/comment/edit.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/taskNew/general/comment/edit.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/taskNew/general/comment/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/taskNew/general/comment/index.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/web.php" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -23,8 +27,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/routes/web.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="587">
-              <caret line="270" column="72" selection-start-line="270" selection-start-column="66" selection-end-line="270" selection-end-column="91" />
+            <state relative-caret-position="419">
+              <caret line="275" column="64" lean-forward="true" selection-start-line="275" selection-start-column="64" selection-end-line="275" selection-end-column="87" />
             </state>
           </provider>
         </entry>
@@ -32,7 +36,7 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/resources/views/layouts/joli.blade.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="356">
+            <state relative-caret-position="2136">
               <caret line="89" column="71" selection-start-line="89" selection-start-column="71" selection-end-line="89" selection-end-column="71" />
             </state>
           </provider>
@@ -41,29 +45,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/resources/views/partial/joli/sidebar.blade.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="523">
+            <state relative-caret-position="8136">
               <caret line="345" column="105" selection-start-line="345" selection-start-column="105" selection-end-line="345" selection-end-column="105" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/Http/Controllers/TaskController.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1512">
-              <caret line="206" column="58" lean-forward="true" selection-start-line="206" selection-start-column="58" selection-end-line="206" selection-end-column="58" />
-              <folding>
-                <element signature="e#40#56#0#PHP" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/Http/Controllers/CommentController.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="504">
-              <caret line="48" column="20" selection-start-line="47" selection-start-column="8" selection-end-line="50" selection-end-column="53" />
             </state>
           </provider>
         </entry>
@@ -71,30 +54,11 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/Http/Controllers/TaskController2.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="716">
-              <caret line="400" column="53" selection-start-line="400" selection-start-column="53" selection-end-line="400" selection-end-column="53" />
+            <state relative-caret-position="548">
+              <caret line="498" column="53" selection-start-line="498" selection-start-column="53" selection-end-line="498" selection-end-column="53" />
               <folding>
                 <element signature="e#40#56#0#PHP" expanded="true" />
               </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/resources/views/taskNew/general/comment/edit.blade.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="380">
-              <caret line="105" column="90" selection-start-line="105" selection-start-column="90" selection-end-line="105" selection-end-column="90" />
-              <caret line="110" column="90" selection-start-line="110" selection-start-column="90" selection-end-line="110" selection-end-column="90" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/resources/views/taskNew/general/comment/index.blade.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="404">
-              <caret line="105" column="58" lean-forward="true" selection-start-line="105" selection-start-column="58" selection-end-line="105" selection-end-column="90" />
             </state>
           </provider>
         </entry>
@@ -111,9 +75,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>['msg']</find>
-      <find>['sender']</find>
-      <find>['file']</find>
       <find>message.show</find>
       <find>['status']</find>
       <find>seenTime</find>
@@ -141,6 +102,9 @@
       <find>department.comment.store</find>
       <find>comment</find>
       <find>department.comment.delete</find>
+      <find>department.reply</find>
+      <find>$c</find>
+      <find>department.reply.store</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -149,10 +113,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/resources/views/provident/index.blade.php" />
-        <option value="$PROJECT_DIR$/resources/views/tax/setup.blade.php" />
-        <option value="$PROJECT_DIR$/resources/views/pension/index.blade.php" />
-        <option value="$PROJECT_DIR$/resources/views/loan_type/index.blade.php" />
         <option value="$PROJECT_DIR$/resources/views/loan_type/edit.blade.php" />
         <option value="$PROJECT_DIR$/resources/views/warning/create.blade.php" />
         <option value="$PROJECT_DIR$/resources/views/warning/warningViewDH.blade.php" />
@@ -166,8 +126,6 @@
         <option value="$PROJECT_DIR$/resources/views/kpi/vote/index.blade.php" />
         <option value="$PROJECT_DIR$/resources/views/kpi/setup/index.blade.php" />
         <option value="$PROJECT_DIR$/resources/views/kpi/index.blade.php" />
-        <option value="$PROJECT_DIR$/resources/views/comment_global/index.blade.php" />
-        <option value="$PROJECT_DIR$/resources/views/comment_global/reply.blade.php" />
         <option value="$PROJECT_DIR$/app/Http/Controllers/ReplygController.php" />
         <option value="$PROJECT_DIR$/resources/views/comment_global/editReply.blade.php" />
         <option value="$PROJECT_DIR$/app/Http/Controllers/CommentgController.php" />
@@ -196,9 +154,15 @@
         <option value="$PROJECT_DIR$/database/seeds/ProjectsTableSeeder.php" />
         <option value="$PROJECT_DIR$/resources/views/taskNew/general/index.blade.php" />
         <option value="$PROJECT_DIR$/resources/views/taskNew/general/dComment.blade.php" />
+        <option value="$PROJECT_DIR$/app/Http/Controllers/CommentController.php" />
+        <option value="$PROJECT_DIR$/resources/views/comment_global/index.blade.php" />
+        <option value="$PROJECT_DIR$/resources/views/comment_global/reply.blade.php" />
+        <option value="$PROJECT_DIR$/resources/views/taskNew/general/comment/reply/index.blade.php" />
         <option value="$PROJECT_DIR$/resources/views/taskNew/general/comment/index.blade.php" />
-        <option value="$PROJECT_DIR$/routes/web.php" />
         <option value="$PROJECT_DIR$/resources/views/taskNew/general/comment/edit.blade.php" />
+        <option value="$PROJECT_DIR$/resources/views/taskNew/general/comment/reply/edit.blade.php" />
+        <option value="$PROJECT_DIR$/routes/web.php" />
+        <option value="$PROJECT_DIR$/resources/views/includes/joli/department_comment/replies.blade.php" />
         <option value="$PROJECT_DIR$/app/Http/Controllers/TaskController2.php" />
       </list>
     </option>
@@ -361,6 +325,30 @@
               <item name="HR" type="462c0819:PsiDirectoryNode" />
               <item name="resources" type="462c0819:PsiDirectoryNode" />
               <item name="views" type="462c0819:PsiDirectoryNode" />
+              <item name="includes" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="HR" type="b2602c69:ProjectViewProjectNode" />
+              <item name="HR" type="462c0819:PsiDirectoryNode" />
+              <item name="resources" type="462c0819:PsiDirectoryNode" />
+              <item name="views" type="462c0819:PsiDirectoryNode" />
+              <item name="includes" type="462c0819:PsiDirectoryNode" />
+              <item name="joli" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="HR" type="b2602c69:ProjectViewProjectNode" />
+              <item name="HR" type="462c0819:PsiDirectoryNode" />
+              <item name="resources" type="462c0819:PsiDirectoryNode" />
+              <item name="views" type="462c0819:PsiDirectoryNode" />
+              <item name="includes" type="462c0819:PsiDirectoryNode" />
+              <item name="joli" type="462c0819:PsiDirectoryNode" />
+              <item name="department_comment" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="HR" type="b2602c69:ProjectViewProjectNode" />
+              <item name="HR" type="462c0819:PsiDirectoryNode" />
+              <item name="resources" type="462c0819:PsiDirectoryNode" />
+              <item name="views" type="462c0819:PsiDirectoryNode" />
               <item name="partial" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
@@ -385,15 +373,6 @@
               <item name="views" type="462c0819:PsiDirectoryNode" />
               <item name="taskNew" type="462c0819:PsiDirectoryNode" />
               <item name="general" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="HR" type="b2602c69:ProjectViewProjectNode" />
-              <item name="HR" type="462c0819:PsiDirectoryNode" />
-              <item name="resources" type="462c0819:PsiDirectoryNode" />
-              <item name="views" type="462c0819:PsiDirectoryNode" />
-              <item name="taskNew" type="462c0819:PsiDirectoryNode" />
-              <item name="general" type="462c0819:PsiDirectoryNode" />
-              <item name="comment" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
@@ -596,12 +575,13 @@
       <workItem from="1575528549978" duration="15390000" />
       <workItem from="1575615354798" duration="15219000" />
       <workItem from="1575697684729" duration="25940000" />
-      <workItem from="1575870609249" duration="23323000" />
+      <workItem from="1575870609249" duration="24110000" />
+      <workItem from="1575956801739" duration="7241000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="1635537000" />
+    <option name="totallyTimeSpent" value="1643565000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -614,9 +594,8 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
-    <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.4984756" visible="true" weight="0.25426438" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.4984756" visible="true" weight="0.195629" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="npm" order="2" sideWeight="0.5015244" side_tool="true" weight="0.15884861" />
       <window_info id="Favorites" order="3" side_tool="true" />
@@ -821,46 +800,6 @@
           <line>186</line>
           <option name="timeStamp" value="214" />
         </line-breakpoint>
-        <line-breakpoint enabled="true" type="php">
-          <url>file://$PROJECT_DIR$/resources/views/taskNew/general/comment/index.blade.php</url>
-          <line>156</line>
-          <option name="timeStamp" value="236" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="php">
-          <url>file://$PROJECT_DIR$/resources/views/taskNew/general/comment/index.blade.php</url>
-          <line>150</line>
-          <option name="timeStamp" value="238" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="php">
-          <url>file://$PROJECT_DIR$/resources/views/taskNew/general/comment/index.blade.php</url>
-          <line>139</line>
-          <option name="timeStamp" value="240" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="php">
-          <url>file://$PROJECT_DIR$/resources/views/taskNew/general/comment/index.blade.php</url>
-          <line>136</line>
-          <option name="timeStamp" value="242" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="php">
-          <url>file://$PROJECT_DIR$/resources/views/taskNew/general/comment/edit.blade.php</url>
-          <line>156</line>
-          <option name="timeStamp" value="245" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="php">
-          <url>file://$PROJECT_DIR$/resources/views/taskNew/general/comment/edit.blade.php</url>
-          <line>150</line>
-          <option name="timeStamp" value="246" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="php">
-          <url>file://$PROJECT_DIR$/resources/views/taskNew/general/comment/edit.blade.php</url>
-          <line>139</line>
-          <option name="timeStamp" value="247" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="php">
-          <url>file://$PROJECT_DIR$/resources/views/taskNew/general/comment/edit.blade.php</url>
-          <line>136</line>
-          <option name="timeStamp" value="248" />
-        </line-breakpoint>
         <line-breakpoint enabled="true" type="javascript">
           <url>file://$PROJECT_DIR$/public/joli/js/demo_tasks.js</url>
           <line>26</line>
@@ -875,39 +814,6 @@
     </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/OfficeController.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="144">
-          <caret line="11" column="6" selection-start-line="11" selection-start-column="6" selection-end-line="11" selection-end-column="6" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/PayscaleController.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="144">
-          <caret line="10" column="6" selection-start-line="10" selection-start-column="6" selection-end-line="10" selection-end-column="6" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/PensionController.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="624">
-          <caret line="41" column="22" lean-forward="true" selection-start-line="41" selection-start-column="16" selection-end-line="41" selection-end-column="111" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/PrivateMessageController.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="356">
-          <caret line="99" column="67" selection-start-line="99" selection-start-column="67" selection-end-line="99" selection-end-column="67" />
-          <folding>
-            <element signature="e#40#53#0#PHP" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/ProjectController.php" />
-    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/PromotionController.php" />
     <entry file="file://$PROJECT_DIR$/app/Http/Controllers/ProvidentController.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="144">
@@ -919,13 +825,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="144">
           <caret line="10" column="6" selection-start-line="10" selection-start-column="6" selection-end-line="10" selection-end-column="6" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/ReplyController.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="144">
-          <caret line="15" column="6" selection-start-line="15" selection-start-column="6" selection-end-line="15" selection-end-column="6" />
         </state>
       </provider>
     </entry>
@@ -1144,27 +1043,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/resources/views/layouts/joli.blade.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="356">
-          <caret line="89" column="71" selection-start-line="89" selection-start-column="71" selection-end-line="89" selection-end-column="71" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/resources/views/partial/joli/sidebar.blade.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="523">
-          <caret line="345" column="105" selection-start-line="345" selection-start-column="105" selection-end-line="345" selection-end-column="105" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/resources/views/comment_global/index.blade.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="336">
-          <caret line="14" column="21" lean-forward="true" selection-end-line="552" selection-end-column="15" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/Http/Controllers/TaskController.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1512">
@@ -1182,46 +1060,110 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/resources/views/taskNew/general/dComment.blade.php">
+    <entry file="file://$PROJECT_DIR$/resources/views/taskNew/general/dComment.blade.php" />
+    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/CommentController.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="336">
-          <caret line="123" column="75" selection-end-line="184" selection-end-column="11" />
+        <state relative-caret-position="1032">
+          <caret line="52" selection-start-line="52" selection-end-line="52" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/views/layouts/joli.blade.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="2136">
+          <caret line="89" column="71" selection-start-line="89" selection-start-column="71" selection-end-line="89" selection-end-column="71" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/views/partial/joli/sidebar.blade.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="8136">
+          <caret line="345" column="105" selection-start-line="345" selection-start-column="105" selection-end-line="345" selection-end-column="105" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/views/comment_global/edit.blade.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-1512" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/views/comment_global/editReply.blade.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-1224" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/views/comment_global/index.blade.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="168">
+          <caret line="196" column="54" lean-forward="true" selection-start-line="196" selection-start-column="54" selection-end-line="196" selection-end-column="54" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/views/comment_global/reply.blade.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="264">
+          <caret line="122" column="79" lean-forward="true" selection-start-line="122" selection-start-column="79" selection-end-line="122" selection-end-column="79" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/views/taskNew/general/comment/reply/index.blade.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="380">
+          <caret line="35" column="46" lean-forward="true" selection-start-line="35" selection-start-column="46" selection-end-line="35" selection-end-column="46" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/resources/views/taskNew/general/comment/index.blade.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="404">
-          <caret line="105" column="58" lean-forward="true" selection-start-line="105" selection-start-column="58" selection-end-line="105" selection-end-column="90" />
+        <state relative-caret-position="439">
+          <caret line="30" column="119" selection-start-line="30" selection-start-column="119" selection-end-line="30" selection-end-column="119" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/resources/views/taskNew/general/comment/edit.blade.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="380">
-          <caret line="105" column="90" selection-start-line="105" selection-start-column="90" selection-end-line="105" selection-end-column="90" />
-          <caret line="110" column="90" selection-start-line="110" selection-start-column="90" selection-end-line="110" selection-end-column="90" />
+        <state relative-caret-position="-949">
+          <caret line="21" column="12" lean-forward="true" selection-start-line="21" selection-start-column="12" selection-end-line="21" selection-end-column="12" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/views/taskNew/general/comment/reply/edit.blade.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1680">
+          <caret line="70" column="54" lean-forward="true" selection-start-line="70" selection-start-column="54" selection-end-line="70" selection-end-column="54" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/routes/web.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="587">
-          <caret line="270" column="72" selection-start-line="270" selection-start-column="66" selection-end-line="270" selection-end-column="91" />
+        <state relative-caret-position="419">
+          <caret line="275" column="64" lean-forward="true" selection-start-line="275" selection-start-column="64" selection-end-line="275" selection-end-column="87" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/CommentController.php">
+    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/ReplyController.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="504">
-          <caret line="48" column="20" selection-start-line="47" selection-start-column="8" selection-end-line="50" selection-end-column="53" />
+        <state relative-caret-position="432">
+          <caret line="90" column="15" selection-start-line="89" selection-start-column="8" selection-end-line="92" selection-end-column="53" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/views/includes/joli/department_comment/replies.blade.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="486">
+          <caret line="36" column="21" lean-forward="true" selection-start-line="36" selection-start-column="21" selection-end-line="36" selection-end-column="21" />
+          <folding>
+            <element signature="e#891#921#0#HTML" expanded="true" />
+            <element signature="e#1509#1532#0#HTML" expanded="true" />
+            <element signature="e#1946#1969#0#HTML" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/Http/Controllers/TaskController2.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="716">
-          <caret line="400" column="53" selection-start-line="400" selection-start-column="53" selection-end-line="400" selection-end-column="53" />
+        <state relative-caret-position="548">
+          <caret line="498" column="53" selection-start-line="498" selection-start-column="53" selection-end-line="498" selection-end-column="53" />
           <folding>
             <element signature="e#40#56#0#PHP" expanded="true" />
           </folding>

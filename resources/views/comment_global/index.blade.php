@@ -194,9 +194,9 @@
                                     <i class="fa fa-mail-reply"></i>
                                 </a>
                                 {{--     Reply        --}}
-                                @foreach($replies as $r)
+                                @foreach($replies as $i => $r)
                                     @if((($r->commentg_id)*1) == (($c->id)*1) )
-                                        <div class="item reply-item reply-item-first">
+                                        <div class="item reply-item {{ ($i == 0) ? "reply-item-first" : "" }}">
                                             <div class="image">
                                                 <img
                                                         @if($r->user_image != null)
