@@ -244,7 +244,9 @@
                     if (this.id == "tasks_completed") {
                         ui.item.find(".pull-right > a").remove();
                         var tid = ui.item.find(".task-footer").attr('tid');
-                        ui.item.find(".pull-right").append('<a href="#" target="_blank" title="Submit Report"><i class="glyphicon glyphicon-envelope"></i></a>');
+                        var route = "{{route('submit.report', ['tid' => 'xxx'])}}";
+                        var replace = route.replace('xxx', tid);
+                        ui.item.find(".pull-right").append('<a href="' + replace + '" target="_blank" title="Submit Report"><i class="glyphicon glyphicon-envelope"></i></a>');
                         // call ajax here (task completed)
                         $.ajax({
                             url: '/ajax/task-status-change',
@@ -254,7 +256,6 @@
                                 return r;
                             }
                         });
-
                     }
                     if (this.id == "tasks_progreess") {
                         ui.item.find(".pull-right > a").remove();

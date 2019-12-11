@@ -288,8 +288,8 @@ Route::get('/task/Comment/download/{cid}', 'TaskController2@taskCommentDownload'
 Route::get('/task/Reply/download/{rid}', 'TaskController2@taskReplyDownload')->name('download.task.reply.file');
 Route::get('/task/Comment/delete/{cid}', 'TaskController2@taskCommentDelete')->name('task.comment.delete');
 Route::get('/task/reply/{rid}', 'TaskController2@taskReplyDelete')->name('task.reply.delete');
-
 Route::get('/Tasks-Management/General/Submit-Report/{tid}', 'TaskController2@submitReport')->name('submit.report');
+Route::post('/Tasks-Management/General/Submit-Report/{tid}', 'TaskController2@submitReportStore')->name('submit.report.store');
 
 
 

@@ -224,7 +224,7 @@ class TaskController2 extends Controller
                                     <div class="task-footer" tid="' . $t->id . '">
                                         <div class="pull-left"><span class="fa fa-clock-o"></span> ' . $t->updated_at . '
                                         </div>
-                                        <div class="pull-right"><a href="#" target="_blank" title="Submit Report"><i class="glyphicon glyphicon-envelope"></i></a>
+                                        <div class="pull-right"><a href="' . route('submit.report', ['tid' => $t->id]) . '" target="_blank" title="Submit Report"><i class="glyphicon glyphicon-envelope"></i></a>
                                         </div>
                                     </div>
                                 </div>';
@@ -714,7 +714,6 @@ class TaskController2 extends Controller
     }
 
 
-
     public function taskReplyUpdate(Request $request, $rid)
     {
         $this->validate($request, [
@@ -738,4 +737,42 @@ class TaskController2 extends Controller
     }
 
 
+    public function submitReport($tid)
+    {
+        $task = Task::find($tid);
+        $dts = [];
+        $ds = Dependency::where('task_id', $task->id)->get();
+        if (count($ds) > 0) {
+            foreach ($ds as $d) {
+                $dts[] = Task::find($d->dependency);
+            }
+        }
+        $task['dependencies'] = $dts;
+        $project = Project::find($task->project_id);
+        $department = Department::find($task->department_id);
+        return view('taskNew.general.report.index', compact('task', 'project', 'department'));
+    }
+
+
+    public function submitReportStore(Request $request, $tid)
+    {
+        $this->validate($request, [
+            'report' => 'required',
+        ]);
+        $t = Task::find($tid);
+        $t->submit_report = $request->report;
+        if ($request->hasFile('file')) {
+            if ($t->submit_file) {
+                unlink($t->submit_file);
+            }
+            $f = $request->file;
+            $f_name = time() . $f->getClientOriginalName();
+            $a = $f->move('uploads/task_reports', $f_name);
+            $d = 'uploads/task_reports/' . $f_name;
+            $t->submit_file = $d;
+        }
+        $t->update();
+        Session::flash('success', "The report has been submitted successfully.");
+        return redirect()->back();
+    }
 }
