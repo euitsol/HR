@@ -343,7 +343,7 @@
                         class="xn-text"> {{$menu[51]->display_name}}</span></a>
             <ul>
                 @permission('project_manager')
-                <li><a href="#"><i class="glyphicon glyphicon-minus"></i> [[{{$menu[52]->display_name}}]]</a></li>
+                <li><a href="{{route('task.project.manager')}}"><i class="glyphicon glyphicon-minus"></i> {{$menu[52]->display_name}}</a></li>
                 @endpermission
                 <li><a href="{{route('task.general')}}"><i
                                 class="glyphicon glyphicon-minus"></i> {{$menu[53]->display_name}}</a></li>

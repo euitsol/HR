@@ -191,6 +191,28 @@
 {{--        <script type="text/javascript" src="{{asset('joli/js/plugins/bootstrap/bootstrap-select.js')}}"></script>--}}
     {{--    <script type="text/javascript" src="{{asset('joli/js/plugins/tagsinput/jquery.tagsinput.min.js')}}"></script>--}}
     <!-- END THIS PAGE PLUGINS-->
+    <script>
+        function noticeDelete(nid) {
+            console.log('ff');
+            if (nid != '') {
+                $.ajax({
+                    url: ("{{ route('total.applied.user', 'nid') }}").replace('nid', nid),
+                    method: "GET",
+                    success: function (res) {
+                        if (res > 0) {
+                            if (confirm("This notice has '" + res + "' applicants. Are you sure to force delete ?")) {
+                                window.location.href = ("{{ route('notice.delete', 'nid') }}").replace('nid', nid);
+                            }
+                        } else {
+                            if (confirm("Are you sure?")) {
+                                window.location.href = ("{{ route('notice.delete', 'nid') }}").replace('nid', nid);
+                            }
+                        }
+                    }
+                });
+            }
+        }
+    </script>
 @endsection
 
 

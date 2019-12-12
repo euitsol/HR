@@ -6,7 +6,7 @@ Route::get('/', function () {
 
 Auth::routes();
 
-Route::get('/test', [
+Route::post('/test', [
     'uses' => 'HomeController@test',
     'as' => 'test'
 ]);
@@ -103,8 +103,8 @@ Route::get('/Designation/Delete/{jid}', 'JobController@destroy')->name('job.dele
 
 Route::get('/Circular', 'NoticeController@index')->name('circular');
 Route::post('/Circular/store', 'NoticeController@store')->name('circular.store');
-Route::post('/notice/{nid}/applied-users', 'NoticeController@totalAppliedUser')->name('total.applied.user');
-Route::post('/notice/{nid}/delete', 'NoticeController@noticeDelete')->name('notice.delete');
+Route::get('/notice/{nid}/applied-users', 'NoticeController@totalAppliedUser')->name('total.applied.user');
+Route::get('/notice/{nid}/delete', 'NoticeController@noticeDelete')->name('notice.delete');
 Route::get('/Notice-unpublish/{nid}', 'NoticeController@unpublish')->name('circular.unpublish');
 Route::get('/Notice-publish/{nid}', 'NoticeController@publish')->name('circular.publish');
 Route::get('/Circular/{nid}', 'NoticeController@view')->name('notice.view');
@@ -291,6 +291,15 @@ Route::get('/task/reply/{rid}', 'TaskController2@taskReplyDelete')->name('task.r
 Route::get('/Tasks-Management/General/Submit-Report/{tid}', 'TaskController2@submitReport')->name('submit.report');
 Route::post('/Tasks-Management/General/Submit-Report/{tid}', 'TaskController2@submitReportStore')->name('submit.report.store');
 
+Route::get('/Tasks-Management/Project-Manager', 'TaskController3@projectManager')->name('task.project.manager');
+Route::get('/ajax/manager/get-tasks-of-project', 'TaskController3@ajaxMTfromP');
+Route::get('/ajax/manager/get-department-of-project', 'TaskController3@ajaxMDfromP');
+Route::post('/Tasks-Management/Project-Manager/Project/Store', 'TaskController3@projectStore')->name('project.store');
+Route::get('/ajax/manager/department_store', 'TaskController3@departmentStore');
+Route::post('/ajax/manager/task_store', 'TaskController3@taskStore')->name('task.store');
+Route::get('/Tasks-Management/Tak-details/{tid}', 'TaskController3@taskDetail')->name('task.detail');
+
+
 
 
 
@@ -445,6 +454,8 @@ Route::post('/Account-Close-Permanently', [
 ///
 
 Route::get('/user/{id}/cv', 'UserinfoController@cv')->name('user.cv');
+
+
 
 
 
