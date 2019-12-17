@@ -6,7 +6,7 @@ Route::get('/', function () {
 
 Auth::routes();
 
-Route::get('/test', [
+Route::post('/test', [
     'uses' => 'HomeController@test',
     'as' => 'test'
 ]);
@@ -103,8 +103,8 @@ Route::get('/Designation/Delete/{jid}', 'JobController@destroy')->name('job.dele
 
 Route::get('/Circular', 'NoticeController@index')->name('circular');
 Route::post('/Circular/store', 'NoticeController@store')->name('circular.store');
-Route::post('/notice/{nid}/applied-users', 'NoticeController@totalAppliedUser')->name('total.applied.user');
-Route::post('/notice/{nid}/delete', 'NoticeController@noticeDelete')->name('notice.delete');
+Route::get('/notice/{nid}/applied-users', 'NoticeController@totalAppliedUser')->name('total.applied.user');
+Route::get('/notice/{nid}/delete', 'NoticeController@noticeDelete')->name('notice.delete');
 Route::get('/Notice-unpublish/{nid}', 'NoticeController@unpublish')->name('circular.unpublish');
 Route::get('/Notice-publish/{nid}', 'NoticeController@publish')->name('circular.publish');
 Route::get('/Circular/{nid}', 'NoticeController@view')->name('notice.view');
@@ -274,20 +274,30 @@ Route::post('/Tasks-Management/General/Department/Comment/update/{cid}', 'TaskCo
 Route::post('/Tasks-Management/General/Department/Reply/update/{rid}', 'TaskController2@departmentReplyUpdate')->name('department.reply.update');
 Route::get('/Department/Comment/download/{cid}', 'TaskController2@departmentCommentDownload')->name('download.department.comment.file');
 Route::get('/Department/Reply/download/{rid}', 'TaskController2@departmentReplyDownload')->name('download.department.reply.file');
-Route::get('/Department/Comment/{cid}', 'TaskController2@departmentCommentDelete')->name('department.comment.delete');
-Route::get('/Department/reply/{rid}', 'TaskController2@departmentReplyDelete')->name('department.reply.delete');
+Route::get('/Department/Comment/delete/{cid}', 'TaskController2@departmentCommentDelete')->name('department.comment.delete');
+Route::get('/Department/reply/delete/{rid}', 'TaskController2@departmentReplyDelete')->name('department.reply.delete');
 Route::get('/Tasks-Management/General/Task/{tid}/Comment', 'TaskController2@taskComment')->name('task.comment');
-//Route::get('/Tasks-Management/General/Department/Comment/{cid}/reply', 'TaskController2@departmentReply')->name('department.reply');
-//Route::post('/Tasks-Management/General/Department/{did}/Comment/store', 'TaskController2@departmentCommentStore')->name('department.comment.store');
-//Route::post('/Tasks-Management/General/Department/Reply/{cid}/store', 'TaskController2@departmentReplyStore')->name('department.reply.store');
-//Route::get('/Tasks-Management/General/Department/{did}/Comment/edit/{cid}', 'TaskController2@departmentCommentEdit')->name('department.comment.edit');
-//Route::get('/Tasks-Management/General/Department/Comment/reply/{rid}/edit', 'TaskController2@departmentReplyEdit')->name('department.reply.edit');
-//Route::post('/Tasks-Management/General/Department/Comment/update/{cid}', 'TaskController2@departmentCommentUpdate')->name('department.comment.update');
-//Route::post('/Tasks-Management/General/Department/Reply/update/{rid}', 'TaskController2@departmentReplyUpdate')->name('department.reply.update');
-//Route::get('/Department/Comment/download/{cid}', 'TaskController2@departmentCommentDownload')->name('download.department.comment.file');
-//Route::get('/Department/Reply/download/{rid}', 'TaskController2@departmentReplyDownload')->name('download.department.reply.file');
-//Route::get('/Department/Comment/{cid}', 'TaskController2@departmentCommentDelete')->name('department.comment.delete');
-//Route::get('/Department/reply/{rid}', 'TaskController2@departmentReplyDelete')->name('department.reply.delete');
+Route::get('/Tasks-Management/General/Task/Comment/{cid}/reply', 'TaskController2@taskReply')->name('task.reply');
+Route::post('/Tasks-Management/General/Task/{tid}/Comment/store', 'TaskController2@taskCommentStore')->name('task.comment.store');
+Route::post('/Tasks-Management/General/task/Reply/{cid}/store', 'TaskController2@taskReplyStore')->name('task.reply.store');
+Route::get('/Tasks-Management/General/Task/Comment/edit/{cid}', 'TaskController2@taskCommentEdit')->name('task.comment.edit');
+Route::get('/Tasks-Management/General/Task/Comment/reply/{rid}/edit', 'TaskController2@taskReplyEdit')->name('task.reply.edit');
+Route::post('/Tasks-Management/General/Task/Comment/update/{cid}', 'TaskController2@taskCommentUpdate')->name('task.comment.update');
+Route::post('/Tasks-Management/General/task/Reply/update/{rid}', 'TaskController2@taskReplyUpdate')->name('task.reply.update');
+Route::get('/task/Comment/download/{cid}', 'TaskController2@taskCommentDownload')->name('download.task.comment.file');
+Route::get('/task/Reply/download/{rid}', 'TaskController2@taskReplyDownload')->name('download.task.reply.file');
+Route::get('/task/Comment/delete/{cid}', 'TaskController2@taskCommentDelete')->name('task.comment.delete');
+Route::get('/task/reply/{rid}', 'TaskController2@taskReplyDelete')->name('task.reply.delete');
+Route::get('/Tasks-Management/General/Submit-Report/{tid}', 'TaskController2@submitReport')->name('submit.report');
+Route::post('/Tasks-Management/General/Submit-Report/{tid}', 'TaskController2@submitReportStore')->name('submit.report.store');
+
+Route::get('/Tasks-Management/Project-Manager', 'TaskController3@projectManager')->name('task.project.manager');
+Route::get('/ajax/manager/get-tasks-of-project', 'TaskController3@ajaxMTfromP');
+Route::get('/ajax/manager/get-department-of-project', 'TaskController3@ajaxMDfromP');
+Route::post('/Tasks-Management/Project-Manager/Project/Store', 'TaskController3@projectStore')->name('project.store');
+Route::get('/ajax/manager/department_store', 'TaskController3@departmentStore');
+Route::post('/ajax/manager/task_store', 'TaskController3@taskStore')->name('task.store');
+Route::get('/Tasks-Management/Tak-details/{tid}', 'TaskController3@taskDetail')->name('task.detail');
 
 
 
@@ -444,6 +454,8 @@ Route::post('/Account-Close-Permanently', [
 ///
 
 Route::get('/user/{id}/cv', 'UserinfoController@cv')->name('user.cv');
+
+
 
 
 

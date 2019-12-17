@@ -8,6 +8,7 @@ use App\Department;
 use App\Dependency;
 use App\Project;
 use App\Reply;
+use App\Replyt;
 use App\Task;
 use App\User;
 use App\Userassign;
@@ -93,9 +94,9 @@ class TaskController2 extends Controller
                                 <span class="fa fa-circle text-success"></span> ' . $d->title . '
                             </a>
                             <div class="pull-right">
-                                <a href="'.
-                                route('department.comment', ['did' => $d->id])
-                                .'" target="_blank" title="Department Comment"><span class="fa fa-comments"></span></a>
+                                <a href="' .
+                        route('department.comment', ['did' => $d->id])
+                        . '" target="_blank" title="Department Comment"><span class="fa fa-comments"></span></a>
                             </div>
                         </div>
                         ';
@@ -156,15 +157,14 @@ class TaskController2 extends Controller
                         if ($t->dependencies) {
                             $html .= '<br>';
                             foreach ($t->dependencies as $td) {
-                                $html .= '<a href="#" target="_blank" title="Task Comment">' . $td->title . '</a>';
-
+                                $html .= '<a href="' . route('task.comment', ['tid' => $td->id]) . '" target="_blank" title="Task Comment">' . $td->title . '</a>';
                             }
                         }
                         $html .= '</div>
                                     <div class="task-footer" tid="' . $t->id . '">
                                         <div class="pull-left"><span class="fa fa-clock-o"></span> ' . $t->deadline . '
                                         </div>
-                                        <div class="pull-right"><a href="#" target="_blank" title="Task Comment"><span class="fa fa-comments"></span></a>
+                                        <div class="pull-right"><a href="' . route('task.comment', ['tid' => $t->id]) . '" target="_blank" title="Task Comment"><span class="fa fa-comments"></span></a>
                                         </div>
                                     </div>
                                 </div>';
@@ -184,7 +184,7 @@ class TaskController2 extends Controller
                         if ($t->dependencies) {
                             $html .= '<br>';
                             foreach ($t->dependencies as $td) {
-                                $html .= '<a href="#" target="_blank" title="Task Comment">' . $td->title . '</a>';
+                                $html .= '<a href="' . route('task.comment', ['tid' => $td->id]) . '" target="_blank" title="Task Comment">' . $td->title . '</a>';
 
                             }
                         }
@@ -192,7 +192,7 @@ class TaskController2 extends Controller
                                     <div class="task-footer" tid="' . $t->id . '">
                                         <div class="pull-left"><span class="fa fa-clock-o"></span> ' . $t->deadline . '
                                         </div>
-                                        <div class="pull-right"><a href="#" target="_blank" title="Task Comment"><span class="fa fa-comments"></span></a>
+                                        <div class="pull-right"><a href="' . route('task.comment', ['tid' => $t->id]) . '" target="_blank" title="Task Comment"><span class="fa fa-comments"></span></a>
                                         </div>
                                     </div>
                                 </div>';
@@ -216,7 +216,7 @@ class TaskController2 extends Controller
                         if ($t->dependencies) {
                             $html .= '<br>';
                             foreach ($t->dependencies as $td) {
-                                $html .= '<a href="#" target="_blank" title="Task Comment">' . $td->title . '</a>';
+                                $html .= '<a href="' . route('task.comment', ['tid' => $td->id]) . '" target="_blank" title="Task Comment">' . $td->title . '</a>';
 
                             }
                         }
@@ -224,7 +224,7 @@ class TaskController2 extends Controller
                                     <div class="task-footer" tid="' . $t->id . '">
                                         <div class="pull-left"><span class="fa fa-clock-o"></span> ' . $t->updated_at . '
                                         </div>
-                                        <div class="pull-right"><a href="#" target="_blank" title="Submit Report"><i class="glyphicon glyphicon-envelope"></i></a>
+                                        <div class="pull-right"><a href="' . route('submit.report', ['tid' => $t->id]) . '" target="_blank" title="Submit Report"><i class="glyphicon glyphicon-envelope"></i></a>
                                         </div>
                                     </div>
                                 </div>';
@@ -236,8 +236,7 @@ class TaskController2 extends Controller
                         if ($t->dependencies) {
                             $html .= '<br>';
                             foreach ($t->dependencies as $td) {
-                                $html .= '<a href="#" target="_blank" title="Task Comment">' . $td->title . '</a>';
-
+                                $html .= '<a href="' . route('task.comment', ['tid' => $td->id]) . '" target="_blank" title="Task Comment">' . $td->title . '</a>';
                             }
                         }
                         $html .= '</div>
@@ -293,9 +292,9 @@ class TaskController2 extends Controller
         $department = Department::find($did);
         $project = Project::find($department->project_id);
         $comments = Comment::where('department_id', $did)->paginate(10);
-        foreach ($comments as $c){
+        foreach ($comments as $c) {
             $replies = Reply::where('comment_id', $c->id)->get();
-            foreach ($replies as $r){
+            foreach ($replies as $r) {
                 $u = User::find($r->user_id);
                 $r['user_image'] = $u->image;
                 $r['user_name'] = $u->name;
@@ -307,7 +306,6 @@ class TaskController2 extends Controller
         }
         return view('taskNew.general.comment.index', compact('department', 'project', 'comments'));
     }
-
 
 
     public function departmentCommentStore(Request $request, $did)
@@ -335,11 +333,10 @@ class TaskController2 extends Controller
     }
 
 
-
     public function departmentCommentDelete($cid)
     {
         $c = Comment::find($cid);
-        if ($c->file){
+        if ($c->file) {
             unlink($c->file);
         }
         $c->delete();
@@ -353,9 +350,9 @@ class TaskController2 extends Controller
         $department = Department::find($did);
         $project = Project::find($department->project_id);
         $comments = Comment::where('department_id', $did)->paginate(10);
-        foreach ($comments as $c){
+        foreach ($comments as $c) {
             $replies = Reply::where('comment_id', $c->id)->get();
-            foreach ($replies as $r){
+            foreach ($replies as $r) {
                 $u = User::find($r->user_id);
                 $r['user_image'] = $u->image;
                 $r['user_name'] = $u->name;
@@ -379,7 +376,7 @@ class TaskController2 extends Controller
         $c = Comment::find($cid);
         $c->comment = $request->comment;
         if ($request->hasFile('file')) {
-            if ($c->file){
+            if ($c->file) {
                 unlink($c->file);
             }
             $f = $request->file;
@@ -397,7 +394,7 @@ class TaskController2 extends Controller
     {
         $c = Comment::find($cid);
         $ext = pathinfo($c->file, PATHINFO_EXTENSION);
-        $name = 'comment_file_department.'.$ext;
+        $name = 'comment_file_department.' . $ext;
         return response()->download($c->file, $name);
     }
 
@@ -408,7 +405,7 @@ class TaskController2 extends Controller
         $department = Department::find($c->department_id);
         $project = Project::find($c->project_id);
         $replies = Reply::where('comment_id', $cid)->get();
-        foreach ($replies as $r){
+        foreach ($replies as $r) {
             $u = User::find($r->user_id);
             $r['user_image'] = $u->image;
             $r['user_name'] = $u->name;
@@ -419,7 +416,6 @@ class TaskController2 extends Controller
         $c['replies'] = $replies;
         return view('taskNew.general.comment.reply.index', compact('c', 'project', 'department'));
     }
-
 
 
     public function departmentReplyStore(Request $request, $cid)
@@ -464,7 +460,7 @@ class TaskController2 extends Controller
         $r = Reply::find($rid);
         $r->reply = $request->reply;
         if ($request->hasFile('file')) {
-            if ($r->file){
+            if ($r->file) {
                 unlink($r->file);
             }
             $f = $request->file;
@@ -482,7 +478,7 @@ class TaskController2 extends Controller
     public function departmentReplyDelete($rid)
     {
         $r = Reply::find($rid);
-        if ($r->file){
+        if ($r->file) {
             unlink($r->file);
         }
         $r->delete();
@@ -495,13 +491,288 @@ class TaskController2 extends Controller
     {
         $r = Reply::find($rid);
         $ext = pathinfo($r->file, PATHINFO_EXTENSION);
-        $name = 'reply_file_department.'.$ext;
+        $name = 'reply_file_department.' . $ext;
         return response()->download($r->file, $name);
     }
 
 
+    public function taskComment($tid)
+    {
+        $task = Task::find($tid);
+        $dts = [];
+        $ds = Dependency::where('task_id', $task->id)->get();
+        if (count($ds) > 0) {
+            foreach ($ds as $d) {
+                $dts[] = Task::find($d->dependency);
+            }
+        }
+        $task['dependencies'] = $dts;
+        $project = Project::find($task->project_id);
+        $department = Department::find($task->department_id);
+        $comments = Commentt::where('task_id', $tid)->get();
+        foreach ($comments as $c) {
+            $replies = Replyt::where('commentt_id', $c->id)->get();
+            foreach ($replies as $r) {
+                $u = User::find($r->user_id);
+                $r['user_image'] = $u->image;
+                $r['user_name'] = $u->name;
+            }
+            $c['replies'] = $replies;
+            $u = User::find($c->user_id);
+            $c['user_image'] = $u->image;
+            $c['user_name'] = $u->name;
+        }
+        return view('taskNew.general.task_comment.index', compact('task', 'project', 'department', 'comments'));
+    }
 
 
+    public function taskCommentStore(Request $request, $tid)
+    {
+        $this->validate($request, [
+            'comment' => 'required',
+        ]);
+        $c = new Commentt;
+        $c->user_id = Auth::id();
+        $c->task_id = $tid;
+        $c->commentt = $request->comment;
+        if ($request->hasFile('file')) {
+            $f = $request->file;
+            $f_name = time() . $f->getClientOriginalName();
+            $a = $f->move('uploads/comments', $f_name);
+            $d = 'uploads/comments/' . $f_name;
+            $c->file = $d;
+        }
+        $c->save();
+        Session::flash('success', "The Comment has been posted successfully.");
+        return redirect()->back();
+    }
 
 
+    public function taskCommentDelete($cid)
+    {
+        $c = Commentt::find($cid);
+        if ($c->file) {
+            unlink($c->file);
+        }
+        $c->delete();
+        Session::flash('success', "The Comment has been deleted successfully.");
+        return redirect()->back();
+    }
+
+
+    public function taskCommentDownload($cid)
+    {
+        $c = Commentt::find($cid);
+        $ext = pathinfo($c->file, PATHINFO_EXTENSION);
+        $name = 'comment_file_department.' . $ext;
+        return response()->download($c->file, $name);
+    }
+
+
+    public function taskCommentEdit($cid)
+    {
+        $cedit = Commentt::find($cid);
+        $task = Task::find($cedit->task_id);
+        $dts = [];
+        $ds = Dependency::where('task_id', $task->id)->get();
+        if (count($ds) > 0) {
+            foreach ($ds as $d) {
+                $dts[] = Task::find($d->dependency);
+            }
+        }
+        $task['dependencies'] = $dts;
+        $project = Project::find($task->project_id);
+        $department = Department::find($task->department_id);
+        $comments = Commentt::where('task_id', $task->id)->get();
+        foreach ($comments as $c) {
+            $replies = Replyt::where('commentt_id', $c->id)->get();
+            foreach ($replies as $r) {
+                $u = User::find($r->user_id);
+                $r['user_image'] = $u->image;
+                $r['user_name'] = $u->name;
+            }
+            $c['replies'] = $replies;
+            $u = User::find($c->user_id);
+            $c['user_image'] = $u->image;
+            $c['user_name'] = $u->name;
+        }
+        return view('taskNew.general.task_comment.edit', compact('task', 'project', 'department', 'cedit', 'comments'));
+    }
+
+
+    public function taskCommentUpdate(Request $request, $cid)
+    {
+        $this->validate($request, [
+            'comment' => 'required',
+        ]);
+        $c = Commentt::find($cid);
+        $c->commentt = $request->comment;
+        if ($request->hasFile('file')) {
+            if ($c->file) {
+                unlink($c->file);
+            }
+            $f = $request->file;
+            $f_name = time() . $f->getClientOriginalName();
+            $a = $f->move('uploads/comments', $f_name);
+            $d = 'uploads/comments/' . $f_name;
+            $c->file = $d;
+        }
+        $c->update();
+        Session::flash('success', "The Comment has been updated successfully.");
+        return redirect()->back();
+    }
+
+
+    public function taskReply($cid)
+    {
+        $c = Commentt::find($cid);
+        $task = Task::find($c->task_id);
+        $dts = [];
+        $ds = Dependency::where('task_id', $task->id)->get();
+        if (count($ds) > 0) {
+            foreach ($ds as $d) {
+                $dts[] = Task::find($d->dependency);
+            }
+        }
+        $task['dependencies'] = $dts;
+        $project = Project::find($task->project_id);
+        $department = Department::find($task->department_id);
+        $replies = Replyt::where('commentt_id', $c->id)->get();
+        foreach ($replies as $r) {
+            $u = User::find($r->user_id);
+            $r['user_image'] = $u->image;
+            $r['user_name'] = $u->name;
+        }
+        $c['replies'] = $replies;
+        $u = User::find($c->user_id);
+        $c['user_image'] = $u->image;
+        $c['user_name'] = $u->name;
+        return view('taskNew.general.task_comment.reply.index', compact('task', 'project', 'department', 'c'));
+    }
+
+
+    public function taskReplyStore(Request $request, $cid)
+    {
+        $this->validate($request, [
+            'reply' => 'required',
+        ]);
+        $c = Commentt::find($cid);
+        $r = new Replyt;
+        $r->user_id = Auth::id();
+        $r->commentt_id = $cid;
+        $r->task_id = $c->task_id;
+        $r->replyt = $request->reply;
+        if ($request->hasFile('file')) {
+            $f = $request->file;
+            $f_name = time() . $f->getClientOriginalName();
+            $a = $f->move('uploads/replies', $f_name);
+            $d = 'uploads/replies/' . $f_name;
+            $r->file = $d;
+        }
+        $r->save();
+        Session::flash('success', "The Reply has been created successfully.");
+        return redirect()->back();
+    }
+
+
+    public function taskReplyDownload($rid)
+    {
+        $r = Replyt::find($rid);
+        $ext = pathinfo($r->file, PATHINFO_EXTENSION);
+        $name = 'reply_file_department.' . $ext;
+        return response()->download($r->file, $name);
+    }
+
+
+    public function taskReplyDelete($rid)
+    {
+        $r = Replyt::find($rid);
+        if ($r->file) {
+            unlink($r->file);
+        }
+        $r->delete();
+        Session::flash('success', "The Reply has been deleted successfully.");
+        return redirect()->back();
+    }
+
+
+    public function taskReplyEdit($rid)
+    {
+        $redit = Replyt::find($rid);
+        $task = Task::find($redit->task_id);
+        $dts = [];
+        $ds = Dependency::where('task_id', $task->id)->get();
+        if (count($ds) > 0) {
+            foreach ($ds as $d) {
+                $dts[] = Task::find($d->dependency);
+            }
+        }
+        $task['dependencies'] = $dts;
+        $project = Project::find($task->project_id);
+        $department = Department::find($task->department_id);
+        return view('taskNew.general.task_comment.reply.edit', compact('task', 'project', 'department', 'redit'));
+    }
+
+
+    public function taskReplyUpdate(Request $request, $rid)
+    {
+        $this->validate($request, [
+            'reply' => 'required',
+        ]);
+        $r = Replyt::find($rid);
+        $r->replyt = $request->reply;
+        if ($request->hasFile('file')) {
+            if ($r->file) {
+                unlink($r->file);
+            }
+            $f = $request->file;
+            $f_name = time() . $f->getClientOriginalName();
+            $a = $f->move('uploads/replies', $f_name);
+            $d = 'uploads/replies/' . $f_name;
+            $r->file = $d;
+        }
+        $r->update();
+        Session::flash('success', "The Reply has been updated successfully.");
+        return redirect()->route('task.reply', ['cid' => $r->commentt_id]);
+    }
+
+
+    public function submitReport($tid)
+    {
+        $task = Task::find($tid);
+        $dts = [];
+        $ds = Dependency::where('task_id', $task->id)->get();
+        if (count($ds) > 0) {
+            foreach ($ds as $d) {
+                $dts[] = Task::find($d->dependency);
+            }
+        }
+        $task['dependencies'] = $dts;
+        $project = Project::find($task->project_id);
+        $department = Department::find($task->department_id);
+        return view('taskNew.general.report.index', compact('task', 'project', 'department'));
+    }
+
+
+    public function submitReportStore(Request $request, $tid)
+    {
+        $this->validate($request, [
+            'report' => 'required',
+        ]);
+        $t = Task::find($tid);
+        $t->submit_report = $request->report;
+        if ($request->hasFile('file')) {
+            if ($t->submit_file) {
+                unlink($t->submit_file);
+            }
+            $f = $request->file;
+            $f_name = time() . $f->getClientOriginalName();
+            $a = $f->move('uploads/task_reports', $f_name);
+            $d = 'uploads/task_reports/' . $f_name;
+            $t->submit_file = $d;
+        }
+        $t->update();
+        Session::flash('success', "The report has been submitted successfully.");
+        return redirect()->back();
+    }
 }
