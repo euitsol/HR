@@ -9,6 +9,19 @@
         <li>{{$menu[26]->display_name}}</li>
         <li class="active">{{$menu[27]->display_name}}</li>
     </ul>
+    <style>
+        #fromDate {
+            line-height: normal;
+            border: 1px solid #a9a9a9;
+            padding: 0px 7px;
+        }
+
+        #toDate {
+            line-height: normal;
+            border: none;
+            border-bottom: 1px dotted black;
+        }
+    </style>
 @endsection
 @section('pageTitle', 'Leave Application')
 @section('content')
@@ -73,46 +86,50 @@
                             {{--                            <div class="container">--}}
                             <div class="row">
                                 <div class="col">
-                                    @foreach($lts as $lt)
-                                        <div class="form-check">
-                                            {{-- <input type="checkbox" name="leaveType[]" value="{{$lt->id}}">--}}
-                                            <label class="form-check-label mb-2"
-                                                   style="min-width: 70px;">{{$lt->type}}</label>
-                                            @php $x = 0; @endphp
-                                            @if ($lt->id != 1)
-                                                @if(count($leaves) > 0)
-                                                    @foreach($leaves as $leave)
-                                                        @if(($leave->leavetype_id * 1) == ($lt->id * 1))
-                                                            <span>
-                                                                <input type="number" name="days[]" min="1"
+                                    <table class="">
+                                        @foreach($lts as $lt)
+                                            <tr>
+                                                <th class="pr-2">{{$lt->type}}</th>
+                                                <td class="p-1">
+                                                    @php $x = 0; @endphp
+                                                    @if ($lt->id != 1)
+                                                        @if(count($leaves) > 0)
+                                                            @foreach($leaves as $leave)
+                                                                @if(($leave->leavetype_id * 1) == ($lt->id * 1))
+                                                                    <span>
+                                                                <input type="number" name="days[]" class="leave-days"
+                                                                       min="1"
                                                                        max="{{$maxLeavePerType - $leave->accepted_days}}">
                                                                 Remaining {{$maxLeavePerType - $leave->accepted_days}} days
                                                             </span>
-                                                            @php $x = 1; @endphp
-                                                            @break
-                                                        @endif
-                                                    @endforeach
-                                                    @if(($x * 1) != 1)
-                                                        <span>
-                                                            <input type="number" name="days[]" min="1"
+                                                                    @php $x = 1; @endphp
+                                                                    @break
+                                                                @endif
+                                                            @endforeach
+                                                            @if(($x * 1) != 1)
+                                                                <span>
+                                                            <input type="number" name="days[]" class="leave-days"
+                                                                   min="1"
                                                                    max="{{$maxLeavePerType}}">
                                                             Remaining {{$maxLeavePerType}} days
                                                         </span>
-                                                    @endif
-                                                @else
-                                                    <span>
-                                                        <input type="number" name="days[]" min="1"
+                                                            @endif
+                                                        @else
+                                                            <span>
+                                                        <input type="number" name="days[]" class="leave-days" min="1"
                                                                max="{{$maxLeavePerType}}">
                                                         Remaining {{$maxLeavePerType}} days
                                                     </span>
-                                                @endif
-                                            @elseif ($lt->id == 1)
-                                                <span>
-                                                    <input type="number" name="days[]" min="1">
+                                                        @endif
+                                                    @elseif ($lt->id == 1)
+                                                        <span>
+                                                    <input type="number" name="days[]" class="leave-days" min="1">
                                                 </span>
-                                            @endif
-                                        </div>
-                                    @endforeach
+                                                    @endif
+                                                </td>
+                                            </tr>
+                                        @endforeach
+                                    </table>
                                 </div>
                             </div>
                             {{--                            </div>--}}
@@ -216,7 +233,13 @@
                 // date2.setDate(date1.getDate() + totalDays);
                 date2.setDate(date1.getDate());
                 document.getElementById('toDate').value = date2.toISOString().slice(0, 10);
+                totalLeaveDays();
             }
+
+
+            $(document).on('keyup focusout change', '.leave-days', function () {
+                totalLeaveDays();
+            });
 
             {{--function checkS() {--}}
             {{--    var maxS = [];--}}
@@ -289,6 +312,32 @@
             //     checkE();
             // });
         });
+
+        function totalLeaveDays() {
+            let totalLeave = 0;
+            $('.leave-days').each(function (i, el) {
+                let elVal = el.value * 1;
+                if (elVal > 0) {
+                    totalLeave += elVal;
+                }
+            });
+            if (totalLeave > 0) {
+                $('#totalLeave').text(totalLeave);
+                $('#toDate').val(dateIncrease(totalLeave, $('#fromDate').val()));
+            }
+        }
+
+        function dateIncrease(days, date) {
+            let from = new Date(date);
+            let fromDate = from.getFullYear() + '-' + (from.getMonth() + 1) + '-' + from.getDate();
+            let _fromDate = new Date(fromDate);
+            let milliseconds = _fromDate.setDate(_fromDate.getDate() + days);
+            let time = new Date(milliseconds);
+            let _year = time.getFullYear();
+            let _month = time.getMonth() + 1;
+            let _date = time.getDate();
+            return _year + '-' + (_month < 10 ? '0' + _month : _month) + '-' + (_date < 10 ? '0' + _date : _date);
+        }
     </script>
 @endsection
 
