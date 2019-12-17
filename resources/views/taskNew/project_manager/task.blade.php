@@ -13,15 +13,15 @@
 @section('pageTitle', 'Loan Type')
 @section('content')
     <div class="row mb-5">
-{{--        @if(session('LoanTypeCreateSuccess'))--}}
-{{--            <div class="alert alert-success text-center">--}}
-{{--                {{session('LoanTypeCreateSuccess')}}--}}
-{{--            </div>--}}
-{{--        @elseif(session('LoanTypeUpdateSuccess'))--}}
-{{--            <div class="alert alert-success text-center">--}}
-{{--                {{session('LoanTypeUpdateSuccess')}}--}}
-{{--            </div>--}}
-{{--        @endif--}}
+        {{--        @if(session('LoanTypeCreateSuccess'))--}}
+        {{--            <div class="alert alert-success text-center">--}}
+        {{--                {{session('LoanTypeCreateSuccess')}}--}}
+        {{--            </div>--}}
+        {{--        @elseif(session('LoanTypeUpdateSuccess'))--}}
+        {{--            <div class="alert alert-success text-center">--}}
+        {{--                {{session('LoanTypeUpdateSuccess')}}--}}
+        {{--            </div>--}}
+        {{--        @endif--}}
         <div class="col-lg-6">
             <div class="panel panel-default">
                 <div class="panel-heading">
@@ -39,12 +39,44 @@
                                     <input type="text" value="{{$task->title}}" name="title" required
                                            class="form-control {{$errors->has('title') ? 'is-invalid' : ''}}">
                                 </div>
-                                <small class="help-block">Duplicate entry is not allowed*</small>
                                 @if($errors->has('title'))
                                     <span class="help-block text-danger">{{$errors->first('title')}}</span>
                                 @endif
                             </div>
                         </div>
+                        <div class="form-group">
+                            <label class="col-md-3 col-xs-12 control-label">Deadline</label>
+                            <div class="col-md-6 col-xs-12">
+                                <div class="input-group">
+                                    <span class="input-group-addon"><span class="fa fa-calendar"></span></span>
+                                    <input type="date" value="{{$task->deadline}}" name="deadline" required
+                                           class="form-control {{$errors->has('deadline') ? 'is-invalid' : ''}}">
+                                </div>
+                                @if($errors->has('deadline'))
+                                    <span class="help-block text-danger">{{$errors->first('deadline')}}</span>
+                                @endif
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-md-3 col-xs-12 control-label">Remark</label>
+                            <div class="col-md-6 col-xs-12">
+                                <div class="input-group">
+                                    <span class="input-group-addon"><span class="fa fa-calendar"></span></span>
+                                    <textarea class="form-control {{$errors->has('deadline') ? 'is-invalid' : ''}}"
+                                              rows="5" name="remark" required>{{$task->remark}}</textarea>
+                                </div>
+                                @if($errors->has('remark'))
+                                    <span class="help-block text-danger">{{$errors->first('remark')}}</span>
+                                @endif
+                            </div>
+                        </div>
+
+                        {{--      Assigned User  --}}
+
+
+                        {{--      Task Priority          --}}
+
+
                     </div>
                     <div class="panel-footer">
                         <a title="refresh" class="btn btn-default back" data-link="{{route('back')}}"><span
@@ -58,35 +90,14 @@
         <div class="col-lg-6">
             <div class="panel panel-default">
                 <div class="panel-heading">
-                    <h3 class="panel-title">All Loan Types</h3>
+                    <h3 class="panel-title">Task detail</h3>
                 </div>
                 <div class="panel-body">
-                    <table class="table table-hover table-striped">
-                        <thead>
-                        <tr>
-                            <th>#</th>
-                            <th>Loan Type</th>
-                            <th>Action</th>
-                        </tr>
-                        </thead>
-                        <tbody>
-                        @foreach($loantypes as $i => $lt)
-                            <tr>
-                                <th scope="row">{{$i + 1}}</th>
-                                <td>{{$lt->type}}</td>
-                                <td>
-                                    @if ($lt->id != 1)
-                                        <a href="{{route('loan.type.edit', ['ltid' => $lt->id])}}"
-                                           class="btn btn-sm btn-success"><i class="fa fa-pencil"></i></a>
-                                        <a href="{{ route('loanType.delete', ['ltid' => $lt->id]) }}"
-                                           class="btn btn-sm btn-danger" onclick="return confirm('Are you sure ?')"><i
-                                                    class="fa fa-trash-o"></i></a>
-                                    @endif
-                                </td>
-                            </tr>
-                        @endforeach
-                        </tbody>
-                    </table>
+                    {{--       If Submitted then show submit report                 --}}
+
+                    {{--        Accept / Reopen option            --}}
+
+
                 </div>
             </div>
         </div>
