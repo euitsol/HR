@@ -51,7 +51,7 @@ Route::post('/Pension/is_active_change', 'PensionController@pensionIsActiveChang
 Route::post('/Pension/is_company_pay', 'PensionController@pensionIsBoth')->name('pension.is.both');
 Route::post('/pension-update', 'PensionController@update')->name('pension.update');
 Route::get('/Pension/is_gross', 'PensionController@isGrossAjax')->middleware('auth');
-Route::get('/Pension/is_gross_text', 'PensionController@isGrossTextAjax')->middleware('auth');
+//Route::get('/Pension/is_gross_text', 'PensionController@isGrossTextAjax')->middleware('auth');
 
 Route::get('/Leave/Setup', 'LeavetypeController@index')->name('leave.setup');
 Route::post('/Leave/Setup/Update', 'LeavetypeController@updatemlpt')->name('leave.mlpt.update');
