@@ -53,7 +53,7 @@
                                 <th class="text-center">#</th>
                                 <th class="text-center">Job</th>
                                 <th class="text-center">Branch</th>
-                                {{--<th>Details</th>--}}
+                                <th class="text-center">Type</th>
                                 <th class="text-center">Action</th>
                             </tr>
                             </thead>
@@ -63,6 +63,7 @@
                                     <th class="text-center">{{$i + 1}}</th>
                                     <td class="text-center">{{$n->jobTitle}}</td>
                                     <td class="text-center">{{$n->branchTitle}}</td>
+                                    <td class="text-center">{{$n->type}}</td>
                                     <td class="text-center">
                                         <a href="{{route('notice.applicant.view', ['nid' => $n->id])}}"
                                            class="btn btn-sm btn-warning mb-1">Applicant</a>

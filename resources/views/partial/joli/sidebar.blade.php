@@ -26,11 +26,10 @@
             <a href="#" class="x-navigation-control"></a>
         </li>
         <li class="xn-profile">
-            @php $LoginUser = Auth::user(); @endphp
             <a href="#" class="profile-mini">
                 <img
-                        @if($LoginUser->image)
-                        src="{{asset($LoginUser->image)}}"
+                        @if(Auth::user()->image)
+                        src="{{asset(Auth::user()->image)}}"
                         @else
                         src="{{asset('joli/avatar.png')}}"
                         @endif
@@ -40,8 +39,8 @@
             <div class="profile">
                 <div class="profile-image">
                     <img
-                            @if($LoginUser->image)
-                            src="{{asset($LoginUser->image)}}"
+                            @if(Auth::user()->image)
+                            src="{{asset(Auth::user()->image)}}"
                             @else
                             src="{{asset('joli/avatar.png')}}"
                             @endif
@@ -50,14 +49,18 @@
                 </div>
                 <div class="profile-data">
                     <div class="profile-data-name">{{Auth::user()->name}}</div>
-                    <div class="profile-data-title">
-                        {{$jobTitle}}
+                    @if((Auth::user()->branch_id * 1) != 0)
+                        <div class="profile-data-title">
+                            {{$jobTitle}}
+                        </div>
+                    @endif
+                </div>
+                @if((Auth::user()->branch_id * 1) != 0)
+                    <div class="profile-controls">
+                        <a href="pages-profile.html" class="profile-control-left"><span class="fa fa-info"></span></a>
+                        <a href="pages-messages.html" class="profile-control-right"><span class="fa fa-envelope"></span></a>
                     </div>
-                </div>
-                <div class="profile-controls">
-                    <a href="pages-profile.html" class="profile-control-left"><span class="fa fa-info"></span></a>
-                    <a href="pages-messages.html" class="profile-control-right"><span class="fa fa-envelope"></span></a>
-                </div>
+                @endif
             </div>
         </li>
         <li>
@@ -226,18 +229,20 @@
             </ul>
         </li>
         @endpermission
-        <li class="xn-openable">
-            <a href="#"><span class="glyphicon glyphicon-check"></span> <span
-                        class="xn-text"> {{$menu[30]->display_name}}</span></a>
-            <ul>
-                <li><a href="{{route('attendance.receive')}}"><i
-                                class="glyphicon glyphicon-minus"></i> {{$menu[31]->display_name}}</a></li>
-                @permission('attendance_edit')
-                <li><a href="{{route('attendance.show')}}"><i
-                                class="glyphicon glyphicon-minus"></i> {{$menu[32]->display_name}}</a></li>
-                @endpermission
-            </ul>
-        </li>
+        @if((Auth::user()->branch_id * 1) != 0)
+            <li class="xn-openable">
+                <a href="#"><span class="glyphicon glyphicon-check"></span> <span
+                            class="xn-text"> {{$menu[30]->display_name}}</span></a>
+                <ul>
+                    <li><a href="{{route('attendance.receive')}}"><i
+                                    class="glyphicon glyphicon-minus"></i> {{$menu[31]->display_name}}</a></li>
+                    @permission('attendance_edit')
+                    <li><a href="{{route('attendance.show')}}"><i
+                                    class="glyphicon glyphicon-minus"></i> {{$menu[32]->display_name}}</a></li>
+                    @endpermission
+                </ul>
+            </li>
+        @endif
         @permission('salary_generate|bonus|provident_fund|pension|loan')
         <li class="xn-openable">
             <a href="#"><span class="fa fa-money"></span> <span
@@ -302,29 +307,31 @@
             </ul>
         </li>
         @endpermission
-        <li class="xn-openable">
-            <a href="#"><span class="fa fa-thumbs-o-down"></span> <span
-                        class="xn-text"> {{$menu[42]->display_name}}</span></a>
-            <ul>
-                <li><a href="{{route('warning.create')}}"><i
-                                class="glyphicon glyphicon-minus"></i> {{$menu[43]->display_name}}</a></li>
-                @permission('warningDH')
-                <li><a href="{{route('warning.showDH')}}"><i
-                                class="glyphicon glyphicon-minus"></i> {{$menu[44]->display_name}}</a></li>
-                @endpermission
-                <li><a href="{{route('appeal.create')}}"><i
-                                class="glyphicon glyphicon-minus"></i> {{$menu[45]->display_name}}</a></li>
-                @permission('warningHR')
-                <li><a href="{{route('warning.showHR')}}"><i
-                                class="glyphicon glyphicon-minus"></i> {{$menu[46]->display_name}}</a></li>
-                @endpermission
-            </ul>
-        </li>
-        @if((Auth::user()->kpiVoting * 1) == 1)
-            <li>
-                <a href="{{route('kpi.vote')}}"><span class="fa fa-tasks"></span> <span
-                            class="xn-text">{{$menu[47]->display_name}}</span></a>
+        @if((Auth::user()->branch_id * 1) != 0)
+            <li class="xn-openable">
+                <a href="#"><span class="fa fa-thumbs-o-down"></span> <span
+                            class="xn-text"> {{$menu[42]->display_name}}</span></a>
+                <ul>
+                    <li><a href="{{route('warning.create')}}"><i
+                                    class="glyphicon glyphicon-minus"></i> {{$menu[43]->display_name}}</a></li>
+                    @permission('warningDH')
+                    <li><a href="{{route('warning.showDH')}}"><i
+                                    class="glyphicon glyphicon-minus"></i> {{$menu[44]->display_name}}</a></li>
+                    @endpermission
+                    <li><a href="{{route('appeal.create')}}"><i
+                                    class="glyphicon glyphicon-minus"></i> {{$menu[45]->display_name}}</a></li>
+                    @permission('warningHR')
+                    <li><a href="{{route('warning.showHR')}}"><i
+                                    class="glyphicon glyphicon-minus"></i> {{$menu[46]->display_name}}</a></li>
+                    @endpermission
+                </ul>
             </li>
+            @if((Auth::user()->kpiVoting * 1) == 1)
+                <li>
+                    <a href="{{route('kpi.vote')}}"><span class="fa fa-tasks"></span> <span
+                                class="xn-text">{{$menu[47]->display_name}}</span></a>
+                </li>
+            @endif
         @endif
         @permission('kpi')
         <li class="xn-openable">
@@ -338,17 +345,20 @@
             </ul>
         </li>
         @endpermission
-        <li class="xn-openable">
-            <a href="#"><span class="glyphicon glyphicon-calendar"></span> <span
-                        class="xn-text"> {{$menu[51]->display_name}}</span></a>
-            <ul>
-                @permission('project_manager')
-                <li><a href="{{route('task.project.manager')}}"><i class="glyphicon glyphicon-minus"></i> {{$menu[52]->display_name}}</a></li>
-                @endpermission
-                <li><a href="{{route('task.general')}}"><i
-                                class="glyphicon glyphicon-minus"></i> {{$menu[53]->display_name}}</a></li>
-            </ul>
-        </li>
+        @if((Auth::user()->branch_id * 1) != 0)
+            <li class="xn-openable">
+                <a href="#"><span class="glyphicon glyphicon-calendar"></span> <span
+                            class="xn-text"> {{$menu[51]->display_name}}</span></a>
+                <ul>
+                    @permission('project_manager')
+                    <li><a href="{{route('task.project.manager')}}"><i
+                                    class="glyphicon glyphicon-minus"></i> {{$menu[52]->display_name}}</a></li>
+                    @endpermission
+                    <li><a href="{{route('task.general')}}"><i
+                                    class="glyphicon glyphicon-minus"></i> {{$menu[53]->display_name}}</a></li>
+                </ul>
+            </li>
+        @endif
         <li class="xn-title">Old</li>
         <li class="xn-openable">
             <a href="#"><span class="fa fa-info"></span> <span

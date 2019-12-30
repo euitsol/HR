@@ -85,9 +85,10 @@ class PermissionsTableSeeder extends Seeder
 
         $Admin = Role::find(2);
         $Admin->attachPermissions([$test]);
+
         $ge = Role::find(3);
         $ge->attachPermissions([$test]);
-        $ge->attachPermission(30);
+//        $ge->attachPermission(30);
 
         $gu = Role::find(4);
         $gu->attachPermission(30);
