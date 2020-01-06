@@ -1,14 +1,6 @@
 @extends('layouts.joli')
 @section('title', 'Leave Application')
-@section('breadcrumb')
-    @php
-        $menuU = Storage::disk('local')->get('menu');
-        $menu = json_decode($menuU);
-    @endphp
-    <ul class="breadcrumb">
-        <li>{{$menu[26]->display_name}}</li>
-        <li class="active">{{$menu[27]->display_name}}</li>
-    </ul>
+@section('style')
     <style>
         #fromDate {
             line-height: normal;
@@ -22,6 +14,16 @@
             border-bottom: 1px dotted black;
         }
     </style>
+@endsection
+@section('breadcrumb')
+    @php
+        $menuU = Storage::disk('local')->get('menu');
+        $menu = json_decode($menuU);
+    @endphp
+    <ul class="breadcrumb">
+        <li>{{$menu[26]->display_name}}</li>
+        <li class="active">{{$menu[27]->display_name}}</li>
+    </ul>
 @endsection
 @section('pageTitle', 'Leave Application')
 @section('content')
@@ -52,10 +54,13 @@
                 <div class="panel panel-default">
                     <div class="panel-heading">
                         <h3 class="panel-title">LEAVE APPLICATION FORM</h3>
+                        <button onclick="printT('PC')" class="btn btn-sm btn-outline-info float-right">
+                            <i class="fa fa-print"></i>
+                        </button>
                     </div>
                     {{--     Form Start              --}}
                     <form action="{{route('leave.application.submit', ['uid' => $user->id])}}" class="form-horizontal"
-                          method="post">
+                          method="post" id="PC">
                         @csrf
                         <div class="panel-body">
                             <div style="float: right;">Date: {{\Carbon\Carbon::now()->format('jS F Y')}}</div>
@@ -145,7 +150,7 @@
                             <div>{{ optional($job)->title}}</div>
                             <input type="hidden" name="today" value="{{\Carbon\Carbon::today()->format('Y-m-d')}}">
                         </div>
-                        <div class="panel-footer">
+                        <div class="panel-footer dn">
                             <a title="refresh" class="btn btn-default back" data-link="{{route('back')}}"><span
                                         class="fa fa-refresh"></span></a>
                             <button type="submit" class="btn btn-primary pull-right">Send</button>
@@ -194,16 +199,14 @@
                                         @endif
                                     </td>
                                     <td>
-                                        @if((($value->approveHR)*1) == 0 && (($value->approveDH)*1) == 0)
+                                        @if(((($value->approveHR)*1) == 0) && ((($value->approveDH)*1) == 0) && ((($value->rejectHR)*1) == 0) && ((($value->rejectDH)*1) == 0))
                                             <a href="{{ route('applied.leave.delete', $value->id) }}"
                                                class="btn btn-danger btn-sm"
                                                onclick="return confirm('Are you sure ?')">
                                                 <i class="fa fa-trash-o"></i>
                                             </a>
                                         @else
-                                            <a href="#"
-                                               class="btn btn-danger btn-sm disabled"
-                                               onclick="return confirm('Are you sure ?')">
+                                            <a href="javascript: void(0)" class="btn btn-danger btn-sm disabled">
                                                 <i class="fa fa-trash-o"></i>
                                             </a>
                                         @endif
@@ -219,6 +222,16 @@
     </section>
 @endsection
 @section('script')
+    <script>
+        function printT(el) {
+            var rp = document.body.innerHTML;
+            $(".dn").addClass('d-none');
+            var pc = document.getElementById(el).innerHTML;
+            document.body.innerHTML = pc;
+            window.print();
+            document.body.innerHTML = rp;
+        }
+    </script>
     <script>
         // Write JS Here
         $(function () {

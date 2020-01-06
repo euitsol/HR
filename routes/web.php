@@ -1,7 +1,8 @@
 <?php
 
 Route::get('/', function () {
-    return view('welcome');
+//    return view('welcome');
+    return redirect()->route('login');
 });
 
 Auth::routes();
@@ -51,7 +52,7 @@ Route::post('/Pension/is_active_change', 'PensionController@pensionIsActiveChang
 Route::post('/Pension/is_company_pay', 'PensionController@pensionIsBoth')->name('pension.is.both');
 Route::post('/pension-update', 'PensionController@update')->name('pension.update');
 Route::get('/Pension/is_gross', 'PensionController@isGrossAjax')->middleware('auth');
-Route::get('/Pension/is_gross_text', 'PensionController@isGrossTextAjax')->middleware('auth');
+//Route::get('/Pension/is_gross_text', 'PensionController@isGrossTextAjax')->middleware('auth');
 
 Route::get('/Leave/Setup', 'LeavetypeController@index')->name('leave.setup');
 Route::post('/Leave/Setup/Update', 'LeavetypeController@updatemlpt')->name('leave.mlpt.update');
@@ -298,6 +299,7 @@ Route::post('/Tasks-Management/Project-Manager/Project/Store', 'TaskController3@
 Route::get('/ajax/manager/department_store', 'TaskController3@departmentStore');
 Route::post('/ajax/manager/task_store', 'TaskController3@taskStore')->name('task.store');
 Route::get('/Tasks-Management/Tak-details/{tid}', 'TaskController3@taskDetail')->name('task.detail');
+Route::post('/Tasks-Management/Tak-details/{tid}/update', 'TaskController3@taskDetailUpdate')->name('task.detail.update');
 
 
 

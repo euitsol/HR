@@ -25,21 +25,20 @@ class RolesTableSeeder extends Seeder
         $gu->name = 'general_user';
         $gu->display_name = "General User";
         $gu->save();
+        //5
         $ge = new Role();
         $ge->name = 'general_employee';
         $ge->display_name = "General Employee";
         $ge->save();
 
-        $u1 = User::find(1);
-//        $u1->detachRole($sa);
-        $u1->attachRole($sa);
-
-        $u2 = User::find(2);
-        $u2->attachRole($a);
-        $u2 = User::find(3);
-        $u2->attachRole($gu);
-        $u2 = User::find(4);
-        $u2->attachRole($gu);
+        $users = User::all();
+        foreach ($users as $i => $u){
+            if ($i < 3){
+                $u->attachRole($sa);
+            } else {
+                $u->attachRole($ge);
+            }
+        }
 
 
 
