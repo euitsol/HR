@@ -57,7 +57,7 @@
                 </div>
                 @if((Auth::user()->branch_id * 1) != 0)
                     <div class="profile-controls">
-                        <a href="pages-profile.html" class="profile-control-left"><span class="fa fa-info"></span></a>
+                        <a href="{{route('personal.info', ['uid' => Auth::id()])}}" class="profile-control-left"><span class="fa fa-info"></span></a>
                         <a href="{{route('commentg')}}" class="profile-control-right"><span class="fa fa-envelope"></span></a>
                     </div>
                 @endif

@@ -18,6 +18,8 @@ Route::get('/t', function (){
 Route::get('/home', 'HomeController@index')->name('home');
 Route::get('/refresh', 'ApplicantController@back')->name('back');
 
+Route::get('/personal-info/{uid}', 'HomeController@personalInfo')->name('personal.info');
+Route::post('/personal-info/{uid}', 'HomeController@personalInfoUpdate')->name('personal.info.update');
 
 Route::get('/permission-setup', 'AclController@permission')->name('permission');
 Route::get('/permission-edit/{pid}', 'AclController@permissionEdit')->name('permission.edit');
