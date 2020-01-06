@@ -33,7 +33,7 @@ class RolesTableSeeder extends Seeder
 
         $users = User::all();
         foreach ($users as $i => $u){
-            if ($i < 2){
+            if ($i < 3){
                 $u->attachRole($sa);
             } else {
                 $u->attachRole($ge);

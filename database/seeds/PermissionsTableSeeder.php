@@ -47,7 +47,8 @@ class PermissionsTableSeeder extends Seeder
             34 => ["project_manager", "Project Manager", "Project Manager menu under Task Management", 53],
         ];
         $superAdmin = Role::find(1);
-        foreach ($ps as $p){
+        $ge = Role::find(5);
+        foreach ($ps as $i => $p){
             $a = new Permission();
             $a->name = $p[0];
             $a->display_name = $p[1];
@@ -55,6 +56,9 @@ class PermissionsTableSeeder extends Seeder
             $a->menu_id = $p[3];
             $a->save();
             $superAdmin->attachPermission($a);
+            if (($i == 29) || ($i == 30)){
+                $ge->attachPermission($a);
+            }
         }
 
         // weekend is excluded now
