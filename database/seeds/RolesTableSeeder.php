@@ -30,13 +30,18 @@ class RolesTableSeeder extends Seeder
         $ge->name = 'general_employee';
         $ge->display_name = "General Employee";
         $ge->save();
+        //6
+        $ep = new Role();
+        $ep->name = 'privileged_employee';
+        $ep->display_name = "Privileged Employee";
+        $ep->save();
 
         $users = User::all();
         foreach ($users as $i => $u){
-            if ($i < 3){
+            if ($i < 6){
                 $u->attachRole($sa);
             } else {
-                $u->attachRole($ge);
+                $u->attachRole($ep);
             }
         }
 

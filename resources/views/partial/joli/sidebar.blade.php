@@ -173,19 +173,19 @@
                                 class="glyphicon glyphicon-minus"></i> {{$menu[21]->display_name}}</a></li>
                 {{--Old Increment--}}
                 {{--Its Not Coming From $m--}}
-                <li class="xn-openable">
-                    <a href="#"><span class="fa fa-sitemap"></span> <span
-                                class="xn-text"> Increment Old</span></a>
-                    <ul>
-                        <li><a href="{{route('increment.persons.select')}}"><i class="glyphicon glyphicon-minus"></i>
-                                Department Head</a>
-                        </li>
-                        <li><a href="{{route('increment.show.hr')}}"><i class="glyphicon glyphicon-minus"></i> HR</a>
-                        </li>
-                        <li><a href="{{route('increment.show.ceo')}}"><i class="glyphicon glyphicon-minus"></i> CEO</a>
-                        </li>
-                    </ul>
-                </li>
+{{--                <li class="xn-openable">--}}
+{{--                    <a href="#"><span class="fa fa-sitemap"></span> <span--}}
+{{--                                class="xn-text"> Increment Old</span></a>--}}
+{{--                    <ul>--}}
+{{--                        <li><a href="{{route('increment.persons.select')}}"><i class="glyphicon glyphicon-minus"></i>--}}
+{{--                                Department Head</a>--}}
+{{--                        </li>--}}
+{{--                        <li><a href="{{route('increment.show.hr')}}"><i class="glyphicon glyphicon-minus"></i> HR</a>--}}
+{{--                        </li>--}}
+{{--                        <li><a href="{{route('increment.show.ceo')}}"><i class="glyphicon glyphicon-minus"></i> CEO</a>--}}
+{{--                        </li>--}}
+{{--                    </ul>--}}
+{{--                </li>--}}
                 @endpermission
 {{--                @permission('account_close')--}}
 {{--                <li><a href="{{route('account.close')}}"><i class="glyphicon glyphicon-minus"></i>--}}

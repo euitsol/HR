@@ -48,6 +48,7 @@ class PermissionsTableSeeder extends Seeder
         ];
         $superAdmin = Role::find(1);
         $ge = Role::find(5);
+        $ep = Role::find(6);
         foreach ($ps as $i => $p){
             $a = new Permission();
             $a->name = $p[0];
@@ -58,6 +59,7 @@ class PermissionsTableSeeder extends Seeder
             $superAdmin->attachPermission($a);
             if (($i == 29) || ($i == 30)){
                 $ge->attachPermission($a);
+                $ep->attachPermission($a);
             }
         }
 

@@ -8,6 +8,24 @@ class UsersTableSeeder extends Seeder
     public function run()
     {
         App\User::create([
+//            'branch_id' => '1',
+            'job_id' => 1,
+            'name' => 'Dummy 1',
+            'email' => 'd@g.com',
+            'password' => bcrypt('123456'),
+            'ip_address' => '127.0.0.1',
+            'fatal_warning' => 0,
+        ]);
+        App\User::create([
+//            'branch_id' => '1',
+            'job_id' => 1,
+            'name' => 'Dummy 2',
+            'email' => 'dd@g.com',
+            'password' => bcrypt('123456'),
+            'ip_address' => '127.0.0.1',
+            'fatal_warning' => 0,
+        ]);
+        App\User::create([
             'branch_id' => '1',
             'name' => 'Mr Mamun Ur Rasid',
             'email' => 'murasid@gmail.com',
@@ -16,6 +34,15 @@ class UsersTableSeeder extends Seeder
             'job_id' => 2,
 //            'userjobinfo_id' => 1,
 //            'userpay_id' => 1,
+            'ip_address' => '127.0.0.1',
+            'fatal_warning' => 0,
+        ]);
+        App\User::create([
+            'branch_id' => '1',
+            'job_id' => 1,
+            'name' => 'Sandeep Chowdhery',
+            'email' => 'schwdhry@gmail.com',
+            'password' => bcrypt('123456'),
             'ip_address' => '127.0.0.1',
             'fatal_warning' => 0,
         ]);
@@ -96,6 +123,33 @@ class UsersTableSeeder extends Seeder
             'job_id' => 10,
             'name' => 'Rakib',
             'email' => 'rakib.euitsols@gmail.com',
+            'password' => bcrypt('123456'),
+            'ip_address' => '127.0.0.1',
+            'fatal_warning' => 0,
+        ]);
+        App\User::create([
+            'branch_id' => '1',
+            'job_id' => 10,
+            'name' => 'Al-Amin',
+            'email' => 'alamin.euitsols@gmail.com',
+            'password' => bcrypt('123456'),
+            'ip_address' => '127.0.0.1',
+            'fatal_warning' => 0,
+        ]);
+        App\User::create([
+            'branch_id' => '1',
+            'job_id' => 10,
+            'name' => 'Sajidul Islam Married',
+            'email' => 'sajidul.euitsols@gmail.com',
+            'password' => bcrypt('123456'),
+            'ip_address' => '127.0.0.1',
+            'fatal_warning' => 0,
+        ]);
+        App\User::create([
+            'branch_id' => '1',
+            'job_id' => 10,
+            'name' => 'Mustafijur Rahman',
+            'email' => 'mustafijur.euitsols@gmail.com',
             'password' => bcrypt('123456'),
             'ip_address' => '127.0.0.1',
             'fatal_warning' => 0,

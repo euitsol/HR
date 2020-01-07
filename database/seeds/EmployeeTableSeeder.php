@@ -11,23 +11,25 @@ class EmployeeTableSeeder extends Seeder
     {
         $users = User::all();
         foreach ($users as $i => $u){
-            Employee::create([
-                'user_id' => $u->id,
-                'employeeType_id' => '1',
-                'religion_id' => '1',
-                'dob' => '1990-10-10',
-                'FathersName' => 'NA',
-                'MothersName' => 'NA',
-                'mobile' => 'NA',
-                'nationality' => 'Bangladeshi',
-                'about_me' => 'NA',
-                'address' => 'NA',
-                'education' => 'NA',
-                'employment' => 'NA',
-                'skills' => 'NA',
-                'languages' => 'NA',
-                'reference' => 'NA',
-            ]);
+            if ($i > 1){
+                Employee::create([
+                    'user_id' => $u->id,
+                    'employeeType_id' => '1',
+                    'religion_id' => '1',
+                    'dob' => '1990-10-10',
+                    'FathersName' => 'NA',
+                    'MothersName' => 'NA',
+                    'mobile' => 'NA',
+                    'nationality' => 'Bangladeshi',
+                    'about_me' => 'NA',
+                    'address' => 'NA',
+                    'education' => 'NA',
+                    'employment' => 'NA',
+                    'skills' => 'NA',
+                    'languages' => 'NA',
+                    'reference' => 'NA',
+                ]);
+            }
         }
 
         App\Incrementpolicy::create([
